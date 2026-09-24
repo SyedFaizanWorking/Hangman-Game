@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Hangman Game</title>
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <div class="cover" id="startCover">
+            <div class="paragraph" id="paraText">
+                This is a Word Guessing Game, Now let's play with easy mode by just pressing the start button.
+            </div>
+            <button id="startBtn" class="staratBttn">Start</button>
+            <div class="warning" id="warningText">
+                In which you have only three trais to save the man, otherwise the man dies and you will lose.
+            </div>
+        </div>
+
+        <div class="cloudBox">
+            <img src="../static/hangman_game_clouds.png" alt="s" class="cloudsImage">
+        </div>
+
+        <div class="trees-box">
+            <img src="../static/Hangman_game_Trees.png" class="treespic" alt="">
+        </div>
+
+
+        <div id="hangmanChar" class="hangman-character-div">
+            <img id="imgChar" class="gamecharImg" alt="s">
+        </div>
+
+        <div class="gif1">
+            <img src="../static/bird.gif" alt="" class="gif1-sparrow">
+        </div>
+
+        <div class="gif2">
+            <img src="../static/deer.gif" alt="" class="gif2-deer">
+        </div>
+
+        <div id="wrongnotify" class="wrongnotifiction notification">
+            <span>😞❌❌</span><span>Wrong Word (-1)</span> <span>❌❌😞</span>
+        </div>
+
+        <div id="correctnotify" class="correctnotifiction notification">
+            <span>&#129395;&#129351;&#128640;</span> <span>Correct Word (+1)</span>
+            <span>&#128640;&#129351;&#129395;</span>
+        </div>
+
+        <div class="trailsBox" id="trailsBox">
+
+        </div>
+
+        <div class="wordsKeyboard">
+
+            <div class="inputfielddivbox" id="inputFieldsBox">
+
+            </div>
+
+            <div class="row1 alphabetsRow">
+                <div name="Q" class="alphabets">Q</div>
+                <div name="W" class="alphabets">W</div>
+                <div name="E" class="alphabets">E</div>
+                <div name="R" class="alphabets">R</div>
+                <div name="T" class="alphabets">T</div>
+                <div name="Y" class="alphabets">Y</div>
+                <div name="U" class="alphabets">U</div>
+                <div name="I" class="alphabets">I</div>
+                <div name="O" class="alphabets">O</div>
+                <div name="P" class="alphabets">P</div>
+            </div>
+            <div class="row2 alphabetsRow">
+                <div name="A" class="alphabets">A</div>
+                <div name="S" class="alphabets">S</div>
+                <div name="D" class="alphabets">D</div>
+                <div name="F" class="alphabets">F</div>
+                <div name="G" class="alphabets">G</div>
+                <div name="H" class="alphabets">H</div>
+                <div name="J" class="alphabets">J</div>
+                <div name="K" class="alphabets">K</div>
+                <div name="L" class="alphabets">L</div>
+
+            </div>
+            <div class="row3 alphabetsRow">
+                <div name="Z" class="alphabets">Z</div>
+                <div name="X" class="alphabets">X</div>
+                <div name="C" class="alphabets">C</div>
+                <div name="V" class="alphabets">V</div>
+                <div name="B" class="alphabets">B</div>
+                <div name="N" class="alphabets">N</div>
+                <div name="M" class="alphabets">M</div>
+
+
+            </div>
+            <div class="row4 alphabetsRow">
+                <button name="enter" id="enterbtn" class="enter">Enter</button>
+
+            </div>
+        </div>
+
+        <div class="hintBox" id="hintBox">
+            <p class="hintparagraph">
+                <span class="bold">Hint: </span>
+                <span class="hintpara" id="hintpara">
+
+                </span>
+            </p>
+        </div>
+
+        <div class="setting-box">
+            <i class="fa-solid fa-gear"></i>
+        </div>
+
+        <!-- Example single danger button -->
+        <form class="dropdown dropdownBtnBox">
+
+            <select name="selectOpt" id="modesform">
+                <option value="0">Easy</option>
+                <option value="1">Medium</option>
+                <option value="2">Hard</option>
+            </select>
+        </form>
+
+    </div>
+
+</body>
+
+<script type="module" src="../static/script.js"></script>
+
+</html>

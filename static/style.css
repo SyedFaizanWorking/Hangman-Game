@@ -48,9 +48,9 @@
             justify-content: center;
             align-items: center;
             gap: 18px;
-            width: 90%;
+            width: 92%;
             text-align: center;
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 500;
             text-shadow: 1px 0px 1px whitesmoke;
 
@@ -159,17 +159,30 @@
     .trailsBox {
         position: absolute;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         z-index: 4;
         top: 80%;
-        left: 10%;
         padding: 4px;
-        /* border-radius: 50%; */
+        /* width: 40px; */
+        left: 10%;
         /* border: 1px solid white; */
         color: #cda781;
         font-size: 16px;
         font-weight: 700;
+
+        .incrementDecrement {
+            display: none;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: #4ecc71;
+            pointer-events: none;
+            animation: floatUpAndFade 2s ease-out forwards;
+        }
     }
 
     .gif1 {
@@ -279,45 +292,144 @@
         }
     }
 
-    .dropdownBtnBox {
+
+    .modes-dropdown {
         position: absolute;
         pointer-events: visible;
         z-index: 4;
-        border: none;
-        outline: none;
-        top: 16%;
-        right: 6%;
-        background-color: transparent !important;
-        cursor: pointer;
+        top: 15.6%;
+        right: 7%;
+        width: 75px;
+        text-align: start;
+        display: inline-block;
+
+        .modes-trigger {
+            color: #492B11;
+            padding: 4px 8px;
+            background-color: transparent;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 4px;
+            /* text-align: center; */
+
+        }
+
+        .modes-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            padding: 2px 4px;
+            background-color: #A67847;
+            z-index: 10;
+            margin-top: 2px;
+            border-radius: 4px;
+            border: 0 !important;
+            border-style: none !important;
+            outline: 0 !important;
+            outline: none !important;
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .modes-option-item {
+            padding: 4px 8px;
+            font-size: 14px;
+            color: #492B11;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.15s ease;
+            border-radius: 4px;
+
+        }
+
+        .modes-option-item:hover {
+            background-color: #492B11;
+            color: rgb(255, 255, 255);
+        }
+
+        .modes-options.open {
+            display: block;
+        }
+
+    }
+
+    .pointer-none {
+        pointer-events: none;
+    }
+
+    .volumeBox {
+        position: absolute;
+        /* left: -1%; */
+        left: -3.5%;
+        top: 89%;
+        z-index: 6;
+        height: 36px;
+        width: 75px;
+        border: 2px solid #301F10;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        padding: 0px 12px;
+        padding: 4px;
+        border-radius: 4px;
+        background-color: #A67847;
+        pointer-events: visible;
 
-
-        #modesform {
-            appearance: none !important;
-            -webkit-appearance: none !important;
-            -moz-appearance: none !important;
+        .vol-Icons {
+            font-size: 18px;
+            color: #301F10;
+            /* border: 1px solid black; */
             background-color: transparent;
             border: none;
-            cursor: pointer;
-            outline: none;
-            color: rgb(70, 42, 31);
-            font-size: 14px;
-            font-weight: 800;
+            height: 100%;
+            width: 35%;
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
+
         }
+
+        .voldivIcon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            cursor: pointer;
+
+            .fullVol {
+                font-size: 20px;
+                display: flex;
+            }
+
+            .muteVol {
+                font-size: 20px;
+                display: none;
+            }
+
+
+            .d-none {
+                display: none;
+            }
+
+            .d-visible {
+                display: flex;
+            }
+        }
+
     }
 
-    .dropdownBtnBox option {
-        background-color: #A67847;
-        border: none;
-        outline: none;
-        cursor: pointer;
+    .volumeBox-toggle {
+        left: -0.5% !important;
     }
+
+    .volumeBox-none {
+        display: none !important;
+    }
+
+
 
     .hintBox {
         width: 160px;
@@ -325,9 +437,9 @@
         overflow: hidden;
         padding: 5px 10px;
         position: absolute;
-        left: 3%;
+        right: 2%;
         z-index: 4;
-        bottom: 35%;
+        bottom: 3%;
         border: 1px solid white;
         background-color: transparent;
         pointer-events: none;
@@ -360,6 +472,140 @@
         top: 0%;
         left: 0%;
 
+    }
+
+
+    .timeBoxMainDiv {
+        height: 25px;
+        width: 86px;
+        cursor: pointer;
+        position: absolute;
+        left: 3%;
+        top: 1%;
+        border: 1.5px solid black;
+        border-radius: 4px;
+        z-index: 6;
+        pointer-events: visible;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        background-color: transparent;
+
+        .timerBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2px;
+
+            .timerGif {
+                height: 20px;
+                width: 20px;
+            }
+
+            .time {
+                font-size: 14px;
+                font-weight: 600;
+                color: black;
+            }
+
+        }
+
+
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            background-color: transparents;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: black;
+            padding: 2px 4px;
+            font-size: 11px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translate(-80%, 10%);
+            width: 86px;
+            border: 1.5px solid black;
+            border-radius: 4px;
+            padding: 4px;
+            background-color: transparent;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            span {
+                color: black;
+                background-color: transparent;
+                padding: 4px 6px;
+                font-size: 14px;
+                text-decoration: none;
+                display: block;
+                cursor: pointer;
+                text-wrap: nowrap;
+                width: 100%;
+                border-radius: 4px;
+
+            }
+
+            span:hover {
+                background-color: #cda781;
+                color: white;
+
+            }
+        }
+
+        .dropdown-content::before {
+            content: " ";
+            background-color: #e2f9ffef;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            filter: blur(4px);
+            border-radius: inherit;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+
+        }
+
+        .show {
+            display: flex;
+        }
+    }
+
+    .timeBoxMainDiv::before {
+        content: " ";
+        background-color: #e2f9ffef;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        filter: blur(2px);
+        border-radius: inherit;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+
+    }
+
+    .d-none {
+        display: none !important;
+
+    }
+
+    .d-visible {
+        display: flex !important;
     }
 
     .hangman-character-div {
@@ -524,11 +770,11 @@
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 
     .main-container {
-
-        /* height: 100vh; */
         height: max(100dvh, 600px);
 
         .hintBox {
+            bottom: 40%;
+            left: 3%;
             width: 150px;
 
             .hintparagraph {
@@ -537,6 +783,15 @@
             }
 
 
+        }
+
+        .modes-dropdown {
+            /* top: 15.6%; */
+            right: 5%;
+        }
+
+        .volumeBox {
+            left: -4.8%;
         }
 
         .gif2 {
@@ -551,6 +806,15 @@
         @media screen and (min-width: 768px) and (max-width: 930px) {
             .trailsBox {
                 left: 9.8%;
+            }
+
+            .modes-dropdown {
+                /* top: 15.6%; */
+                right: 4%;
+            }
+
+            .volumeBox {
+                left: -5.8%;
             }
         }
 
@@ -636,6 +900,23 @@
             left: 10.7%;
         }
 
+
+        .modes-dropdown {
+            top: 30.6%;
+            right: 5%;
+        }
+
+        .timeBoxMainDiv {
+
+            top: 2%;
+            left: auto;
+            right: 4% !important;
+        }
+
+        .volumeBox {
+            left: -6.4%;
+        }
+
         .cover {
             width: 70%;
         }
@@ -671,6 +952,8 @@
 
         .hintBox {
             width: 150px;
+            left: 2%;
+            bottom: 40%;
 
             .hintparagraph {
                 font-size: 14px;
@@ -751,6 +1034,35 @@
             left: 13.7%;
         }
 
+        .hintBox {
+            width: 150px;
+            left: 2%;
+            bottom: 40%;
+
+            .hintparagraph {
+                font-size: 14px;
+
+            }
+
+
+        }
+
+        .modes-dropdown {
+            top: 40.2%;
+            right: 5%;
+        }
+
+        .timeBoxMainDiv {
+
+            top: 2%;
+            left: auto;
+            right: 4% !important;
+        }
+
+        .volumeBox {
+            left: -8.7%;
+        }
+
         .cover {
             width: 70%;
 
@@ -790,16 +1102,7 @@
         }
 
 
-        .hintBox {
-            width: 150px;
 
-            .hintparagraph {
-                font-size: 12px;
-
-            }
-
-
-        }
 
         .hangman-character-div {
 
@@ -920,13 +1223,31 @@
 
         .hintBox {
             width: 150px;
+            left: 2%;
+            bottom: 40%;
 
             .hintparagraph {
-                font-size: 12px;
+                font-size: 14px;
 
             }
 
 
+        }
+
+        .modes-dropdown {
+            top: 40.2%;
+            right: 3%;
+        }
+
+        .timeBoxMainDiv {
+
+            top: 2%;
+            left: auto;
+            right: 4% !important;
+        }
+
+        .volumeBox {
+            left: -9.9%;
         }
 
         .hangman-character-div {
@@ -953,11 +1274,13 @@
                 position: relative;
                 top: -6%;
 
+
                 .inputField {
-                    height: 50px;
-                    width: 54px;
-                    font-size: 22px;
+                    height: 40px;
+                    width: 44px;
+                    font-size: 20px;
                 }
+
             }
 
             .alphabetsRow {
@@ -1049,14 +1372,32 @@
 
 
         .hintBox {
-            width: 150px;
+            width: 100px;
+            left: 2%;
+            bottom: 40%;
 
             .hintparagraph {
-                font-size: 12px;
+                font-size: 11px;
 
             }
 
 
+        }
+
+        .modes-dropdown {
+            top: 40.2%;
+            right: 0%;
+        }
+
+        .timeBoxMainDiv {
+
+            top: 2%;
+            left: auto;
+            right: 4% !important;
+        }
+
+        .volumeBox {
+            left: -12.9%;
         }
 
         .hangman-character-div {
@@ -1082,9 +1423,9 @@
                 top: -6%;
 
                 .inputField {
-                    height: 50px;
-                    width: 54px;
-                    font-size: 22px;
+                    height: 30px;
+                    width: 34px;
+                    font-size: 20px;
                 }
             }
 
@@ -1125,6 +1466,18 @@
         background-position: center;
         background-repeat: no-repeat;
         height: max(100dvh, 990px);
+
+        .modes-dropdown {
+            top: 31.2%;
+            right: 7%;
+        }
+
+        .timeBoxMainDiv {
+
+            top: 2%;
+            left: auto;
+            right: 4% !important;
+        }
 
         .trailsBox {
             top: 7.5%;
@@ -1226,6 +1579,8 @@
 
 
 
+
+
     }
 }
 
@@ -1237,6 +1592,18 @@
         background-position: center;
         background-repeat: no-repeat;
         height: max(100dvh, 990px);
+
+        .modes-dropdown {
+            top: 31.2%;
+            right: 7%;
+        }
+
+        .timeBoxMainDiv {
+
+            top: 2%;
+            left: auto;
+            right: 4% !important;
+        }
 
         .trailsBox {
             top: 7.5%;
@@ -1349,6 +1716,18 @@
         background-position: center;
         background-repeat: no-repeat;
         height: max(100dvh, 990px);
+
+        .modes-dropdown {
+            top: 31.2%;
+            right: 7%;
+        }
+
+        .timeBoxMainDiv {
+
+            top: 2%;
+            left: auto;
+            right: 4% !important;
+        }
 
         .trailsBox {
             top: 7.5%;
@@ -1465,6 +1844,18 @@
         .trailsBox {
             top: 7.5%;
             left: 10.7%;
+        }
+
+        .modes-dropdown {
+            top: 31.2%;
+            right: 7%;
+        }
+
+        .timeBoxMainDiv {
+
+            top: 2%;
+            left: auto;
+            right: 4% !important;
         }
 
         .cover {
@@ -1670,13 +2061,32 @@
 
 @keyframes floatLeft {
     0% {
-        /* Starts off-screen to the right side of the window */
         transform: translateX(100%);
     }
 
     100% {
-        /* Ends completely off-screen to the left side */
-        /* transform: translateX(calc(-100% / 2)); */
         transform: translateX(-100%);
+    }
+}
+
+@keyframes floatUpAndFade {
+    0% {
+        opacity: 0;
+        transform: translate(200%, 0) scale(0.5);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translate(200%, -20px) scale(1.2);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translate(200%, -20px) scale(1.2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(200%, -100px) scale(1);
     }
 }

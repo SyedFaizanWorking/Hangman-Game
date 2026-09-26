@@ -4,7 +4,9 @@
 function startJavaScriptFunc() {
 
     let startbtn = document.getElementById('startBtn')
-    let modesForm = document.getElementById('modesform')
+
+
+    // let modesForm = document.getElementById('modesform')
     let hintBx = document.getElementById('hintBox')
     let enterbtn = document.getElementById('enterbtn')
     let cover = document.getElementById('startCover')
@@ -13,6 +15,7 @@ function startJavaScriptFunc() {
     let correctnotify = document.getElementById('correctnotify')
     let wrongnotify = document.getElementById('wrongnotify')
     let trailsBox = document.getElementById('trailsBox')
+    let incrementDecrement = document.getElementById('incrementDecrement')
     let alphabets = document.querySelectorAll('.alphabets');
 
     const btncllickSound = new Audio('/static/btnClick.wav')
@@ -24,10 +27,22 @@ function startJavaScriptFunc() {
     const backgroundSound = new Audio('/static/backgroundSound.mp3')
 
 
-    // hangmanChar.innerHTML = `<img class="gamecharImg" src="../static/normal.gif" alt="s">`;
+    const dropBtn = document.getElementById("timeBox");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const timeforms = document.querySelectorAll(".time-option-items");
+
+    let modesForm = document.getElementById('modesform');
+    const modesDropdownBtn = document.getElementById("modesDropdownBtn");
+    const modesDropdownMenu = document.getElementById("modesDropdownMenu");
+    const modesOptionsList = document.querySelectorAll(".modes-option-item");
+
+    let volumeBox = document.getElementById('volumeBox');
+    let volBoxArrowIcon = document.getElementById('volBoxArrowIcon');
+    let speakerIconsDiv = document.getElementById('speakerIconsDiv');
+
+
     imgChar.src = "/static/normal.gif";
     enterbtn.disabled = true;
-    modesForm.disabled = true;
     hintBx.style.display = "none";
 
     let wordsObjBackend = [];
@@ -39,11 +54,190 @@ function startJavaScriptFunc() {
     let wordsMapValue = []
     let isEnterBtnDisabled = true;
     let ismatch = false;
-    // let messageOutput = '';
     let currentMode = '0'
-    modesForm.value = '0';
     let count = -1;
     let charTopValue = '';
+    let isSoundMute = false;
+    const modeLabels = { '0': 'Easy', '1': 'Medium', '2': 'Hard' };
+    const timeArr = [120, 180, 300, 600];
+
+    // const timeshow = ['1:30']
+
+    dropBtn.classList.add("d-none");
+    modesDropdownBtn.classList.add('pointer-none')
+    volumeBox.classList.add('volumeBox-none')
+    modesForm.value = '0';
+    timeforms.value = '0';
+
+
+
+    modesDropdownBtn.addEventListener("click", (event) => {
+        modesDropdownMenu.classList.toggle("open");
+        event.stopPropagation();
+    });
+
+    modesOptionsList.forEach(item => {
+        item.addEventListener("click", (event) => {
+            const targetValue = event.target.dataset.value;
+            modesDropdownBtn.textContent = modeLabels[targetValue];
+            modesForm.value = targetValue;
+            modesForm.dispatchEvent(new Event('change', { bubbles: true }));
+            modesDropdownMenu.classList.remove("open");
+        });
+    });
+
+    window.addEventListener("click", () => {
+        modesDropdownMenu.classList.remove("open");
+    });
+
+    let intervalId = null;
+    function timeCountDown(timeValue, btnClk = false) {
+        let timeBoxText = document.getElementById('timeBoxText')
+        let firstIntervalid = '';
+        let counter = 0;
+
+        if (intervalId) {
+            // console.log('Clearing previous interval ID:', intervalId);
+            clearInterval(intervalId);
+        }
+
+
+        counter = timeValue;
+        intervalId = setInterval((e) => {
+            firstIntervalid = intervalId
+            const minutes = Math.floor(counter / 60);
+            let seconds = counter % 60;
+
+            if (seconds < 10) {
+                let formattedSeconds = String(seconds).padStart(2, '0');
+                seconds = formattedSeconds
+            }
+            // console.log("show minuts", minutes)
+            // console.log("show seconds", seconds)
+            timeBoxText.innerHTML = `${minutes}:${seconds}`
+
+            if (counter === 0) {
+                // console.log("show counter zero")
+                clearInterval(intervalId)
+                intervalId = null;
+                backgroundSound.pause();
+                hintBx.style.display = "none";
+                emptyInputs = [];
+                nonEmptyInputsvalues = [];
+                userTypedInputsvalues = [];
+                count = -1
+                setTimeout(() => {
+                    trails = 0;
+                    trailsBox.innerText = trails
+                    if (trails === 0) {
+                        hangmanChar.style.top = `${charTopValue - 4}%`
+                        imgChar.src = "/static/dead.gif";
+                    }
+                    enterbtn.disabled = true;
+                    modesDropdownBtn.classList.add('pointer-none')
+                    dropBtn.classList.add("d-none");
+                    if (!isSoundMute) {
+                        loseGameSound.currentTime = 0;
+                        loseGameSound.play();
+                    }
+                    cover.classList.remove('disabled');
+                    cover.style.gap = "10px";
+                    volumeBox.classList.add('volumeBox-none')
+                    let ptext = document.querySelectorAll("#tt,#paraText,#warningText,#startBtn")
+                    console.log("show my loop", ptext)
+                    let ttbox = `<span>Time Up!</span>`;
+                    let fstPra = `
+                    
+                    
+                    <img src="../static/angry.png" alt="s" class="d2-img1 d2-img"> Man Die : You Lose! <img src="../static/angry.png" alt="s" class="d2-img1 d2-img">`;
+                    let btntext = "Start Again";
+                    let wtext = `In which you have only three trais and must be completed to given time to save the man, So Beware for Next Time.`;
+                    ptext.forEach((e) => {
+                        if (e.id === "tt") {
+                            e.style.fontSize = '22px';
+                            e.innerHTML = ttbox
+                        }
+                        if (e.id === "paraText") {
+                            e.style.fontSize = '22px';
+                            e.innerHTML = fstPra
+                        }
+                        if (e.id === "startBtn") {
+                            e.innerText = btntext
+                        }
+                        if (e.id === "warningText") {
+                            e.innerText = wtext
+                        }
+                    })
+                }, 1000);
+
+
+
+
+
+            }
+            counter--
+
+            return intervalId;
+        }, 1000);
+
+
+
+
+    }
+
+
+    timeforms.forEach((items) => {
+        items.addEventListener("click", (itemClick) => {
+            const itemsData = parseInt(itemClick.target.dataset.value)
+            timeCountDown(timeArr[itemsData])
+            // clearInterval(intervalId)
+
+        })
+    })
+
+
+
+    dropBtn.addEventListener("click", (event) => {
+        dropdownMenu.classList.toggle("show");
+        event.stopPropagation();
+    });
+
+    window.addEventListener("click", () => {
+        if (dropdownMenu.classList.contains("show")) {
+            dropdownMenu.classList.remove("show");
+        }
+    });
+
+
+
+
+    volBoxArrowIcon.addEventListener("click", (e) => {
+        let parent = e.target.parentElement.offsetParent
+        parent.classList.toggle('volumeBox-toggle')
+        setTimeout(() => {
+            parent.classList.remove('volumeBox-toggle')
+        }, 5000);
+        e.stopPropagation();
+    })
+
+    speakerIconsDiv.addEventListener("click", (e) => {
+        const fullVol = e.currentTarget.querySelector('.fullVol');
+        const muteVol = e.currentTarget.querySelector('.muteVol');
+        fullVol.classList.toggle('d-none');
+        muteVol.classList.toggle('d-visible');
+        if (!fullVol.classList.contains('d-visible')) {
+            backgroundSound.pause();
+            isSoundMute = true;
+
+        }
+        if (!fullVol.classList.contains('d-none')) {
+            backgroundSound.currentTime = 0;
+            backgroundSound.play();
+            isSoundMute = false;
+        }
+    })
+
+
 
 
 
@@ -151,6 +345,7 @@ function startJavaScriptFunc() {
 
     }
 
+    // this function is used for get the top position of character is css 
     function getNestedMediaCssTop(element) {
         let result = null;
 
@@ -196,26 +391,26 @@ function startJavaScriptFunc() {
     }
 
     startbtn.addEventListener('click', async (e) => {
+        timeCountDown(timeArr[0])
         e.preventDefault();
+        volumeBox.classList.remove('volumeBox-none')
+        dropBtn.classList.remove("d-none");
         imgChar.src = "/static/normal.gif";
-        setTimeout(() => {
-            console.log("show me the setTime Out")
-            backgroundSound.currentTime = 0;
-            backgroundSound.play();
-        }, 500);
+        if (!isSoundMute) {
+            setTimeout(() => {
+                console.log("show me the setTime Out")
+                backgroundSound.currentTime = 0;
+                backgroundSound.play();
+            }, 500);
+            startGameSound.currentTime = 0;
+            startGameSound.play();
+        }
 
         currentMode = '0'
-
         charTopValue = parseInt(getNestedMediaCssTop(hangmanChar))
-
-        console.log("Hangman TOP:", parseInt(getNestedMediaCssTop(hangmanChar)));
-
-        // hangmanChar.style.top = `${charTopValue}%`
-        startGameSound.currentTime = 0;
-        startGameSound.play();
         let cover = document.getElementById('startCover')
         cover.classList.add('disabled');
-        modesForm.disabled = false;
+        modesDropdownBtn.classList.remove('pointer-none')
         emptyInputs = [];
 
 
@@ -269,8 +464,11 @@ function startJavaScriptFunc() {
     alphabets.forEach((btns) => {
         btns.addEventListener('click', (keyEvent) => {
 
-            btncllickSound.currentTime = 0;
-            btncllickSound.play();
+
+            if (!isSoundMute) {
+                btncllickSound.currentTime = 0;
+                btncllickSound.play();
+            }
 
 
             if (emptyInputs.length) {
@@ -339,8 +537,12 @@ function startJavaScriptFunc() {
         });
 
         combinedArry = arr3;
-        enterBtnSound.currentTime = 0;
-        enterBtnSound.play();
+        if (!isSoundMute) {
+            enterBtnSound.currentTime = 0;
+            enterBtnSound.play();
+        }
+
+
 
         try {
             let data = await fetch('/user-data', {
@@ -358,20 +560,31 @@ function startJavaScriptFunc() {
 
             if (result.Response_Data.New_Words !== null) {
                 if (ismatch) {
+                    if (!isSoundMute) {
+                        setTimeout(() => {
+                            yesSound.play();
+                            yesSound.currentTime = 0;
+                        }, 500);
+                    }
 
-                    setTimeout(() => {
-                        yesSound.play();
-                        yesSound.currentTime = 0;
-                    }, 500);
 
                     console.log("Yes you type correct word")
+                    incrementDecrement.classList.add('d-visible');
+                    incrementDecrement.innerText = "+1";
+                    incrementDecrement.style.color = "#28530c";
                     correctnotify.style.display = "flex";
                     setTimeout(() => {
+                        incrementDecrement.classList.remove('d-visible');
                         correctnotify.style.display = "none";
                     }, 1500);
                 } else {
                     wrongnotify.style.display = "flex";
+                    incrementDecrement.classList.add('d-visible');
+                    incrementDecrement.innerText = "-1";
+                    incrementDecrement.style.color = "red";
+                    console.log("show increment decrement", incrementDecrement)
                     setTimeout(() => {
+                        incrementDecrement.classList.remove('d-visible');
                         wrongnotify.style.display = "none";
                     }, 1500);
                     console.log("No the Word Are Not Match")
@@ -391,11 +604,15 @@ function startJavaScriptFunc() {
                     count = -1
                     setTimeout(() => {
                         enterbtn.disabled = true;
-                        modesForm.disabled = true;
-                        loseGameSound.currentTime = 0;
-                        loseGameSound.play();
-                        cover.classList.remove('disabled');
+                        modesDropdownBtn.classList.add('pointer-none')
+                        dropBtn.classList.add("d-none");
+                        if (!isSoundMute) {
+                            loseGameSound.currentTime = 0;
+                            loseGameSound.play();
+                        }
 
+                        cover.classList.remove('disabled');
+                        volumeBox.classList.add('volumeBox-none')
                         let ptext = document.querySelectorAll("#paraText,#warningText,#startBtn")
                         console.log("show my loop", ptext)
                         let fstPra = `<img src="../static/angry.png" alt="s" class="d2-img1 d2-img"> Man Die : You Lose! <img src="../static/angry.png" alt="s" class="d2-img1 d2-img">`;
@@ -430,13 +647,25 @@ function startJavaScriptFunc() {
                     count = -1
                     setTimeout(() => {
                         enterbtn.disabled = true;
-                        modesForm.disabled = true;
-                        winGameSound.currentTime = 0;
-                        winGameSound.play();
+                        // modesForm.disabled = true;
+                        dropBtn.classList.add("d-none");
+                        modesDropdownBtn.classList.add('pointer-none')
+
+
+                        if (!isSoundMute) {
+                            winGameSound.currentTime = 0;
+                            winGameSound.play();
+                        }
+
+
                         cover.classList.remove('disabled');
+                        volumeBox.classList.add('volumeBox-none')
                         let ptext = document.querySelectorAll("#paraText,#warningText,#startBtn")
                         console.log("show my loop", ptext)
                         let fstPra = `<img src="../static/happy.png" alt="s" class="d2-img1 d2-img">  You Win! <img src="../static/happy.png" alt="s" class="d2-img1 d2-img">`;
+                        hangmanChar.style.top = `${charTopValue}%`
+                        imgChar.src = "/static/happy.gif";
+
                         let btntext = "Start Again";
                         let wtext = ` ${result.Response_Data.Message} So Let's Play Again`;
                         ptext.forEach((e) => {

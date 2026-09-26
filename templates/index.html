@@ -19,6 +19,7 @@
     <div class="main-container">
 
         <div class="cover" id="startCover">
+            <div class="tt" id="tt"></div>
             <div class="paragraph" id="paraText">
                 This is a Word Guessing Game, Now let's play with easy mode by just pressing the start button.
             </div>
@@ -50,7 +51,7 @@
         </div>
 
         <div id="wrongnotify" class="wrongnotifiction notification">
-            <span>😞❌❌</span><span>Wrong Word (-1)</span> <span>❌❌😞</span>
+            <span>🦧🙈❌</span><span>Wrong Word (-1)</span> <span>❌🙈🦧</span>
         </div>
 
         <div id="correctnotify" class="correctnotifiction notification">
@@ -58,8 +59,9 @@
             <span>&#128640;&#129351;&#129395;</span>
         </div>
 
-        <div class="trailsBox" id="trailsBox">
-
+        <div class="trailsBox">
+            <div class="trai" id="trailsBox"></div>
+            <div class="incrementDecrement" id="incrementDecrement"></div>
         </div>
 
         <div class="wordsKeyboard">
@@ -118,19 +120,48 @@
             </p>
         </div>
 
+        <div class="timeBoxMainDiv" id="timeBox">
+            <div class="timerBox">
+                <img class="timerGif" src="/static/timer.gif" alt="2" />
+                <span class="time" id="timeBoxText">2:00</span>
+
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa-solid fa-chevron-down"></i></button>
+                <div id="dropdownMenu" class="dropdown-content">
+                    <span class="time-option-items" data-value="0">2:00</span>
+                    <span class="time-option-items" data-value="1">3:00</span>
+                    <span class="time-option-items" data-value="2">5:00</span>
+                    <span class="time-option-items" data-value="3">10:00</span>
+                </div>
+                <input type="hidden" name="timeSelectionOption" id="timeforms" value="0">
+            </div>
+        </div>
+
         <div class="setting-box">
             <i class="fa-solid fa-gear"></i>
         </div>
 
-        <!-- Example single danger button -->
-        <form class="dropdown dropdownBtnBox">
 
-            <select name="selectOpt" id="modesform">
-                <option value="0">Easy</option>
-                <option value="1">Medium</option>
-                <option value="2">Hard</option>
-            </select>
-        </form>
+        <div class="modes-dropdown">
+            <button type="button" id="modesDropdownBtn" class="modes-trigger">Easy</button>
+            <div id="modesDropdownMenu" class="modes-options">
+                <div class="modes-option-item" data-value="0">Easy</div>
+                <div class="modes-option-item" data-value="1">Medium</div>
+                <div class="modes-option-item" data-value="2">Hard</div>
+            </div>
+            <input type="hidden" name="selectOpt" id="modesform" value="0">
+        </div>
+
+        <div class="volumeBox" id="volumeBox">
+            <div class="voldivIcon" id="speakerIconsDiv">
+                <span class="fullVol"><i class="fa-solid fa-volume"></i></span>
+                <span class="muteVol"><i class="fa-solid fa-volume-xmark"></i></span>
+            </div>
+            <button class="vol-Icons" id="volBoxArrowIcon">
+                <i class="fa-solid fa-angle-right"></i>
+            </button>
+        </div>
 
     </div>
 

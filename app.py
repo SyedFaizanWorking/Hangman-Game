@@ -411,6 +411,7 @@ arrMediumWords = [
   }
 ]
 
+
 arrHardWords =[
   {
     "Word": "genetic",

@@ -260,7 +260,7 @@ function startJavaScriptFunc() {
             let hint = wordsObjBackend.Hint;
             hintBx.style.display = "block";
             let wordsArr = word.split('')
-
+            console.log("---------------show me the word arrr", wordsArr)
             const maxRange = wordsArr.length;
             const num1 = Math.floor(Math.random() * maxRange);
             const validOptionsForNum2 = [];

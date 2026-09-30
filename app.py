@@ -1347,9 +1347,6 @@ arrHardWords = [
 
 
 
-
-
-
 @app.route('/favicon.ico')
 def favicon():
     return '', 204

@@ -1458,6 +1458,278 @@
 
 /* media queries for specific devices  strickly  */
 
+@media only screen and (width: 1032px) and (max-height : 1376px) {
+
+    .main-container {
+        background-size: 100% 100%;
+        background-image: url('./Hangman_Tablet_Responisve.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        height: max(100dvh, 990px);
+
+        .trailsBox {
+            top: 7.9%;
+            left: 10.9%;
+        }
+
+
+        .modes-dropdown {
+            top: 31.6%;
+            right: 7%;
+
+            .modes-trigger {
+                font-size: 22px;
+            }
+        }
+
+        .timeBoxMainDiv {
+
+            top: 2%;
+            left: auto;
+            right: 4% !important;
+        }
+
+        .volumeBox {
+            left: -4.4%;
+        }
+
+        .cover {
+            width: 70%;
+        }
+
+        .gif1 {
+            top: 75%;
+            left: 10%;
+        }
+
+        .gif2 {
+            top: 59%;
+            left: 80%;
+        }
+
+        .dropdownBtnBox {
+            top: 31%;
+            right: 3%;
+
+            #modesform {
+                font-size: 18px;
+            }
+        }
+
+        .trees-box {
+            display: none;
+
+        }
+
+        .cloudBox {
+            display: none;
+        }
+
+
+        .hintBox {
+            width: 150px;
+            left: 2%;
+            bottom: 40%;
+
+            .hintparagraph {
+                font-size: 14px;
+
+            }
+
+
+        }
+
+        .hangman-character-div {
+
+            top: 40%;
+            left: 51.7%;
+            height: 430px;
+            width: 300px;
+        }
+
+        .wordsKeyboard {
+            left: 50%;
+            top: 85%;
+            gap: 4px;
+
+            .inputfielddivbox {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 4px;
+                padding: 4px 0px;
+                position: relative;
+                top: -6%;
+
+                .inputField {
+                    height: 50px;
+                    width: 53px;
+                    font-size: 24px;
+                }
+            }
+
+            .alphabetsRow {
+                gap: 0px;
+
+                .alphabets {
+                    font-size: 22px;
+                    font-weight: 600;
+                    width: 55px;
+                    width: 55px;
+                    padding: 10px 0px;
+
+                }
+
+                .enter {
+                    width: 120px;
+
+                }
+
+            }
+        }
+
+
+
+
+    }
+}
+
+@media only screen and (width: 960px) and (max-height : 1440px) {
+
+    .main-container {
+        background-size: 100% 100%;
+        background-image: url('./Hangman_Tablet_Responisve.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        height: max(100dvh, 990px);
+
+        .trailsBox {
+            top: 7.9%;
+            left: 10.9%;
+        }
+
+
+        .modes-dropdown {
+            top: 31.6%;
+            right: 7%;
+
+            .modes-trigger {
+                font-size: 22px;
+            }
+        }
+
+        .timeBoxMainDiv {
+
+            top: 2%;
+            left: auto;
+            right: 4% !important;
+        }
+
+        .volumeBox {
+            left: -4.4%;
+        }
+
+        .cover {
+            width: 70%;
+        }
+
+        .gif1 {
+            top: 75%;
+            left: 10%;
+        }
+
+        .gif2 {
+            top: 59%;
+            left: 80%;
+        }
+
+        .dropdownBtnBox {
+            top: 31%;
+            right: 3%;
+
+            #modesform {
+                font-size: 18px;
+            }
+        }
+
+        .trees-box {
+            display: none;
+
+        }
+
+        .cloudBox {
+            display: none;
+        }
+
+
+        .hintBox {
+            width: 150px;
+            left: 2%;
+            bottom: 40%;
+
+            .hintparagraph {
+                font-size: 14px;
+
+            }
+
+
+        }
+
+        .hangman-character-div {
+
+            top: 40%;
+            left: 51.7%;
+            height: 430px;
+            width: 300px;
+        }
+
+        .wordsKeyboard {
+            left: 50%;
+            top: 85%;
+            gap: 4px;
+
+            .inputfielddivbox {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 4px;
+                padding: 4px 0px;
+                position: relative;
+                top: -6%;
+
+                .inputField {
+                    height: 50px;
+                    width: 53px;
+                    font-size: 24px;
+                }
+            }
+
+            .alphabetsRow {
+                gap: 0px;
+
+                .alphabets {
+                    font-size: 22px;
+                    font-weight: 600;
+                    width: 55px;
+                    width: 55px;
+                    padding: 10px 0px;
+
+                }
+
+                .enter {
+                    width: 120px;
+
+                }
+
+            }
+        }
+
+
+
+
+    }
+}
+
 @media only screen and (width: 820px) and (height: 1180px) {
 
     .main-container {
@@ -1708,6 +1980,7 @@
     }
 }
 
+
 @media only screen and (width: 912px) and (height: 1368px) {
 
     .main-container {
@@ -1832,7 +2105,7 @@
     }
 }
 
-@media only screen and (width<=854px) and (height: 1280px) {
+@media only screen and (width: 854px) and (height: 1280px) {
 
     .main-container {
         background-size: 100% 100%;
@@ -1956,105 +2229,17 @@
     }
 }
 
-@media only screen and (width<=1280px) and (height: 800px) {
+
+@media only screen and (min-width: 1279px) and (max-width: 1281px) and (min-height: 799px) and (max-height: 801px) {
     .main-container {
-
-        /* height: 100vh; */
-        height: max(100dvh, 600px);
-
-        .hintBox {
-            width: 150px;
-
-            .hintparagraph {
-                font-size: 14px;
-
-            }
-
-
-        }
-
-        .gif2 {
-            top: 70%;
-            left: 49%;
-        }
-
-        .cover {
-            width: 60%;
-        }
-
-        @media screen and (min-width: 768px) and (max-width: 930px) {
-            .trailsBox {
-                left: 9.8%;
-            }
-        }
-
-
-
-        .dropdownBtnBox {
-            right: 4%;
-            padding: 0px 12px;
-
-            #modesform {
-                font-size: 10px;
-                padding: 2px 12px;
-
-            }
-        }
-
         .hangman-character-div {
 
-            top: 65%;
-            left: 32.1%;
+
+            left: 32.5%;
             height: 350px;
-            width: 270px;
+            width: 280px;
         }
-
-        .wordsKeyboard {
-            left: 72%;
-            gap: 4px;
-
-            .inputfielddivbox {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 4px;
-                padding: 6px 0px;
-                position: relative;
-                top: -6%;
-
-                .inputField {
-                    height: 34px;
-                    width: 30px;
-                    font-size: 22px;
-                }
-            }
-
-            .alphabetsRow {
-                gap: 0px;
-
-                .alphabets {
-                    font-size: 20px;
-                    font-weight: 700;
-                    width: 42px;
-                    padding: 3px 0px;
-
-                }
-
-
-
-
-
-                .enter {
-                    width: 112px;
-
-                }
-
-            }
-        }
-
-
     }
-
 }
 
 

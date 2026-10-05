@@ -19,14 +19,24 @@
     <div class="main-container">
 
         <div class="cover" id="startCover">
+            <div class="firstText" id="warningText">
+                Let's Play
+            </div>
             <div class="tt" id="tt"></div>
             <div class="paragraph" id="paraText">
-                This is a Word Guessing Game, Now let's play with easy mode by just pressing the start button.
+                This is a Word Guessing Game, You have Three Chances to win and Three to Lose
             </div>
-            <button id="startBtn" class="staratBttn">Start</button>
-            <div class="warning" id="warningText">
-                In which you have only three trais to save the man, otherwise the man dies and you will lose.
-            </div>
+
+
+            <!-- <button id="startBtn" class="staratBttn">Play</button> -->
+            <button class="collect-button" id="startBtn">
+
+                <div class="face"></div>
+
+                <span id="buttonSpanTag">Play</span>
+
+            </button>
+
         </div>
 
         <div class="cloudBox">
@@ -51,24 +61,40 @@
         </div>
 
         <div id="wrongnotify" class="wrongnotifiction notification">
-            <span>🦧🙈❌</span><span>Wrong Word (-1)</span> <span>❌🙈🦧</span>
+            <span class="mainNotify">Wrong Word</span>
+            <span class="mainNotifyLine">You Need Trial to Win</span>
         </div>
 
         <div id="correctnotify" class="correctnotifiction notification">
-            <span>&#129395;&#129351;&#128640;</span> <span>Correct Word (+1)</span>
-            <span>&#128640;&#129351;&#129395;</span>
+            <span class="mainNotify">Correct Word</span>
+            <span class="mainNotifyLine">You Need Trial to Win</span>
         </div>
 
-        <div class="trailsBox">
-            <div class="trai" id="trailsBox"></div>
-            <div class="incrementDecrement" id="incrementDecrement"></div>
-        </div>
+        <div class="trailsBox" id="trailsBoxMainDiv">
+            <div class="trailNumBox">
+                <div class="trai" id="trailsBox"></div>
+                <div class="incrementDecrement" id="incrementDecrement"></div>
+            </div>
 
-        <div class="wordsKeyboard">
-
-            <div class="inputfielddivbox" id="inputFieldsBox">
+            <div class="progressBarBox">
+                <span id="bar-label">Loss</span>
+                <div class="bar-container">
+                    <div id="data-bar" class="progress-bar"></div>
+                </div>
 
             </div>
+        </div>
+
+
+        <div class="wordsKeyboard">
+            <!-- id="inputFieldsBox" -->
+
+            <!-- <img class="inputBoxFrameImg" src="/static/inputBoxframe.png" alt="d"> -->
+            <div class="inputframebox" id="inputFieldsBox">
+                <!-- id="inputFieldsBox" -->
+            </div>
+
+
 
             <div class="row1 alphabetsRow">
                 <div name="Q" class="alphabets">Q</div>
@@ -107,18 +133,27 @@
             </div>
             <div class="row4 alphabetsRow">
                 <button name="enter" id="enterbtn" class="enter">Enter</button>
+                <button name="enter" id="crossbtn" class="crossBtn "><i class="fa-solid fa-xmark"></i></button>
 
             </div>
         </div>
 
-        <div class="hintBox" id="hintBox">
-            <p class="hintparagraph">
-                <span class="bold">Hint: </span>
-                <span class="hintpara" id="hintpara">
 
-                </span>
-            </p>
+
+
+
+        <div class="hintBox" id="hintBox">
+
+            <span class="hintpara" id="hintpara">
+            </span>
+            <button class="translateBtn" id="translateBtn">Translate</button>
+
         </div>
+
+        <button class="hintBulbBox" id="hintBulb">
+            <img src="/static/bulb.png" alt="s" class="hintBulb">
+            <span>Hint</span>
+        </button>
 
         <div class="timeBoxMainDiv" id="timeBox">
             <div class="timerBox">
@@ -137,6 +172,7 @@
                 <input type="hidden" name="timeSelectionOption" id="timeforms" value="0">
             </div>
         </div>
+
 
         <div class="setting-box">
             <i class="fa-solid fa-gear"></i>

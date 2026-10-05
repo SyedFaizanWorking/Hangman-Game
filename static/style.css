@@ -9,7 +9,6 @@
 
 .main-container {
 
-
     height: max(100vh, 559px);
     width: 100%;
     background-color: burlywood;
@@ -24,24 +23,41 @@
 
 
     .cover {
-        pointer-events: none;
+        /* transform-style: preserve-3d; */
+        pointer-events: visible;
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 30%;
+        width: 40%;
         padding: 0px 0px;
-        height: 240px;
-        background-color: #dff8ff17;
-        z-index: 5;
+        height: 280px;
+        z-index: 10;
         transform: translate(-50%, -50%);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
-        gap: 22px;
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        gap: 18px;
         border-radius: 12px;
-        border: 1.5px solid white;
+        /* border: 1.5px solid white; */
+        filter: drop-shadow(0px 0px 119px rgba(255, 255, 255, 0.906));
+
+        .tt {
+            margin-bottom: -11px;
+            margin-top: 5px;
+            text-shadow: 1px 0px 1px rgb(3, 3, 3);
+            color: white;
+        }
+
+        .firstText {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-top: -24px;
+        }
 
         .paragraph {
             display: flex;
@@ -52,7 +68,9 @@
             text-align: center;
             font-size: 18px;
             font-weight: 500;
-            text-shadow: 1px 0px 1px whitesmoke;
+            text-shadow: 1px 0px 1px rgb(3, 3, 3);
+            padding: 0px 50px;
+            color: white;
 
             .d2-img {
                 height: 60px;
@@ -98,21 +116,157 @@
             font-weight: 600;
             text-shadow: 1px 0px 1px whitesmoke;
         }
+
+
+        .collect-button {
+            pointer-events: visible;
+            position: relative;
+            width: 151px;
+            height: 52px;
+            padding: 0;
+            border: 0;
+            border-radius: 18px;
+            cursor: pointer;
+            background:
+                linear-gradient(180deg,
+                    #a18356 0px,
+                    #C4925D 5px,
+                    #A37446 12px,
+                    #A37446 42px,
+                    #A57544 53px,
+                    #4B2A13 60px);
+            box-shadow:
+                0 4px 0 #543722,
+                0 6px 7px rgba(70, 38, 5, 0.38),
+                inset 0 0 0 2px #715432,
+                inset 0 2px 0 rgba(109, 90, 56, 0.9);
+            overflow: hidden;
+        }
+
+        .collect-button::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 6px;
+            width: 139px;
+            height: 46px;
+            border-radius: 14px;
+            background:
+                linear-gradient(180deg,
+                    #C4925D 0px,
+                    #C4925D 4px,
+                    transparent 8px),
+                linear-gradient(180deg,
+                    rgb(249, 200, 109) 0%,
+                    #dea364 55%,
+                    #915916 100%);
+            box-shadow:
+                inset 0 1px 0 rgb(252, 235, 157),
+                inset 2px 0 0 #C4925D,
+                inset -2px 0 0 #C3915C,
+                inset 0 -4px 0 #C3915C;
+
+            z-index: 1;
+        }
+
+        .collect-button .face {
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            width: 133px;
+            height: 40px;
+            border-radius: 12px;
+            background:
+                linear-gradient(180deg,
+                    #b4ec25 0px,
+                    #8ddc2d 4px,
+                    #a9f344 9px,
+                    #77cf47 19px,
+                    #449112 30px,
+                    #439010 36px,
+                    #2F6833 40px);
+
+            box-shadow:
+                inset 0 2px 0 #f2ff8a,
+                inset 2px 0 0 #a5f24a,
+                inset -2px 0 0 #21ad35,
+                inset 0 -4px 0 #159b34,
+                inset 0 0 5px rgba(0, 110, 30, 0.25);
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .collect-button .face::before {
+            content: "";
+            position: absolute;
+            right: 13px;
+            top: 4px;
+            width: 25px;
+            height: 7px;
+            border-radius: 50%;
+            background:
+                linear-gradient(180deg,
+                    rgba(255, 255, 255, 0.90),
+                    rgba(255, 255, 255, 0.25));
+            transform: rotate(16deg);
+            filter: blur(0.4px);
+            opacity: 0.85;
+        }
+
+        .collect-button .face::after {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 5px;
+            width: 48px;
+            height: 3px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.23);
+            transform: rotate(-3deg);
+            filter: blur(1px);
+        }
+
+        .collect-button span {
+            position: absolute;
+            z-index: 5;
+            left: 0;
+            top: 10px;
+            width: 151px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 0.1px;
+            line-height: 1;
+            color: #ffffff;
+
+            text-shadow:
+                0 0px 0 #ffffff,
+                0 2px 0 #7fbe81,
+                0 0px 3 #2f312f,
+
+        }
+
+        .collect-button:active {
+            transform: translateY(4px);
+            box-shadow:
+                0 1px 0 #743508,
+                0 3px 5px rgba(70, 38, 5, 0.3),
+                inset 0 0 0 2px #a94c0a;
+        }
+
+        .collect-button:hover {
+            filter: brightness(1.03);
+        }
+
+
+
     }
 
-    .cover::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        border-radius: inherit;
-        background-color: rgba(255, 255, 255, 0.2);
-        /* Translucent white overlay */
-        backdrop-filter: blur(10px);
-    }
+
+
 
     .disabled {
         display: none;
@@ -157,33 +311,144 @@
     }
 
     .trailsBox {
-        position: absolute;
+
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        gap: 12px;
+        position: relative;
         z-index: 4;
-        top: 80%;
-        padding: 4px;
-        /* width: 40px; */
-        left: 10%;
-        /* border: 1px solid white; */
-        color: #cda781;
-        font-size: 16px;
-        font-weight: 700;
+        top: 81%;
+        left: 5.3%;
+        height: 55px;
+        /* padding: 4px; */
+        /* border: 1px solid black; */
+        width: 135px;
+        /* width: fit-content; */
 
-        .incrementDecrement {
-            display: none;
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-            font-size: 24px;
-            font-weight: bold;
-            color: #4ecc71;
-            pointer-events: none;
-            animation: floatUpAndFade 2s ease-out forwards;
+        .trailNumBox {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: #cda781;
+            font-size: 16px;
+            font-weight: 700;
+            /* border: 1px solid white; */
+
+            .incrementDecrement {
+                display: none;
+                position: absolute;
+                left: 50%;
+                top: 0;
+                transform: translateX(-50%);
+                font-size: 24px;
+                font-weight: bold;
+                color: #4ecc71;
+                pointer-events: none;
+                animation: floatUpAndFade 2s ease-out forwards;
+            }
+        }
+
+        .progressBarBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border: 1px solid yellow; */
+            width: 100%;
+            margin-bottom: 3px;
+
+
+            .bar-container {
+                height: 10px;
+                width: 92px;
+                border-radius: 8px;
+                overflow: hidden;
+                background: linear-gradient(to bottom, #815D39, #815D39);
+                box-shadow:
+                    inset 0 2px 4px rgba(0, 0, 0, 0.2),
+                    0 1px 1px rgba(94, 83, 44, 0.6);
+                border: 1px solid #3b2a02;
+
+                .progress-bar {
+                    position: relative;
+
+                    height: 100%;
+                    width: 0%;
+                    transition: width 0.5s ease, background-color 0.5s ease;
+
+
+                    background-image: linear-gradient(to bottom,
+                            rgba(255, 255, 255, 0.45) 0%,
+                            rgba(255, 255, 255, 0.15) 45%,
+                            rgba(0, 0, 0, 0.05) 50%,
+                            rgba(0, 0, 0, 0.25) 100%);
+                    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+                    /* Animated Glowing Diagonal Stripes */
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+
+                        /* Generates semi-transparent 45-degree candy stripes */
+                        background-image: linear-gradient(-45deg,
+                                rgba(255, 255, 255, 0.2) 25%,
+                                transparent 25%,
+                                transparent 50%,
+                                rgba(255, 255, 255, 0.2) 50%,
+                                rgba(255, 255, 255, 0.2) 75%,
+                                transparent 75%,
+                                transparent);
+                        background-size: 20px 20px;
+                        /* Size of the stripes */
+
+                        /* Loops the moving animation infinitely */
+                        animation: move-stripes 1.5s linear infinite;
+                    }
+                }
+            }
+
+            #bar-label {
+                font-size: 12px;
+                font-weight: 600;
+                color: #533626;
+                position: absolute;
+                top: 11%;
+                left: -4%;
+            }
         }
     }
+
+    /* .bar-container {
+        position: absolute;
+        z-index: 4;
+        top: 80%;
+        left: 10%;
+        height: 24px;
+        width: 100px;
+        background-color: #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease, background-color 0.5s ease;
+        }
+    } */
+
+
+
+
+
+    /* Keyframes to smoothly loop the stripe pattern horizontally */
 
     .gif1 {
         display: flex;
@@ -234,8 +499,12 @@
     }
 
     .notification {
+
+        height: 92px;
+        width: 260px;
         display: none;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: start;
         align-items: center;
         gap: 6px;
         pointer-events: none;
@@ -244,16 +513,35 @@
         top: 10%;
         left: 50%;
         padding: 12px;
-        background-color: #dff8ff52;
         z-index: 5;
         padding: 22px;
         border-radius: 12px;
-        border: 1px solid white;
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+
+        .mainNotify {
+            margin-top: -12px;
+            font-size: 16px;
+            font-weight: 800;
+            /* color: white; */
+            text-shadow: 0px 0px 1.5px rgb(3, 3, 3);
+            color: white;
+
+        }
+
+        .mainNotifyLine {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+        }
 
 
     }
 
-    .notification::before {
+    /* .notification::before {
         content: '';
         position: absolute;
         top: 0;
@@ -263,9 +551,8 @@
         z-index: -1;
         border-radius: inherit;
         background-color: rgba(255, 255, 255, 0.2);
-        /* Translucent white overlay */
         backdrop-filter: blur(10px);
-    }
+    } */
 
 
     .setting-box {
@@ -430,59 +717,102 @@
     }
 
 
-
     .hintBox {
-        width: 160px;
+        width: 200px;
+        min-height: 125px;
+        max-height: 160px;
         border-radius: 4px;
         overflow: hidden;
-        padding: 5px 10px;
+        padding-top: 32px;
+        padding-bottom: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: start;
         position: absolute;
-        right: 2%;
+        right: 1%;
         z-index: 4;
-        bottom: 3%;
-        border: 1px solid white;
+        bottom: 1%;
         background-color: transparent;
         pointer-events: none;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
 
-        .hintparagraph {
-            font-size: 14px;
+
+
+        .hintpara {
+            font-size: 12px;
             font-weight: 600;
             color: black;
-            text-shadow: 1px 1px 3px white;
+            text-shadow: 1px 1px 3px rgb(2, 2, 2);
+            height: 63%;
+            width: 80%;
+            padding: 4px;
+            color: white;
 
-            .bold {
-                font-size: 16px;
-                font-weight: 800;
-                color: rgb(255, 49, 49);
-            }
         }
+
+        .translateBtn {
+            pointer-events: visible;
+            position: absolute;
+            bottom: 17%;
+            right: 12%;
+            z-index: 4;
+            font-size: 10px;
+            font-weight: 600;
+            background-color: #3ba801;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            padding: 2px 4px;
+            cursor: pointer;
+            border: 1px solid black;
+        }
+
 
 
     }
 
-    .hintBox::before {
-        content: " ";
-        background-color: #e2f9ffef;
-        height: 100%;
-        width: 100%;
-        z-index: -1;
-        filter: blur(4px);
-        border-radius: inherit;
+    .hintBulbBox {
+        pointer-events: visible;
         position: absolute;
-        top: 0%;
-        left: 0%;
+        right: 4%;
+        z-index: 4;
+        bottom: 15%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        cursor: pointer;
+        /* border: 1px solid black; */
+        height: 45px;
+        width: 51px;
+        background-color: transparent;
+        border: none;
+
+        .hintBulb {
+            height: 100%;
+            width: 100%;
+            object-fit: fill;
+        }
+
+        span {
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+        }
 
     }
 
 
     .timeBoxMainDiv {
-        height: 25px;
-        width: 86px;
+        height: 44px;
+        width: 117px;
         cursor: pointer;
         position: absolute;
         left: 3%;
         top: 1%;
-        border: 1.5px solid black;
+        /* border: 1.5px solid black; */
         border-radius: 4px;
         z-index: 6;
         pointer-events: visible;
@@ -491,6 +821,9 @@
         align-items: center;
         gap: 4px;
         background-color: transparent;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
 
         .timerBox {
             display: flex;
@@ -506,8 +839,10 @@
             .time {
                 font-size: 14px;
                 font-weight: 600;
-                color: black;
+                color: white;
             }
+
+
 
         }
 
@@ -521,7 +856,7 @@
 
         .dropbtn {
             background-color: transparent;
-            color: black;
+            color: white;
             padding: 2px 4px;
             font-size: 11px;
             border: none;
@@ -535,10 +870,10 @@
             left: 50%;
             transform: translate(-80%, 10%);
             width: 86px;
-            border: 1.5px solid black;
+            /* border: 1.5px solid black; */
             border-radius: 4px;
             padding: 4px;
-            background-color: transparent;
+            background-color: #A67847;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
             flex-direction: column;
@@ -546,7 +881,7 @@
             align-items: center;
 
             span {
-                color: black;
+                color: rgb(67, 53, 36);
                 background-color: transparent;
                 padding: 4px 6px;
                 font-size: 14px;
@@ -556,17 +891,16 @@
                 text-wrap: nowrap;
                 width: 100%;
                 border-radius: 4px;
-
             }
 
             span:hover {
-                background-color: #cda781;
+                background-color: #492B11;
                 color: white;
 
             }
         }
 
-        .dropdown-content::before {
+        /* .dropdown-content::before {
             content: " ";
             background-color: #e2f9ffef;
             height: 100%;
@@ -578,14 +912,14 @@
             top: 0%;
             left: 0%;
 
-        }
+        } */
 
         .show {
             display: flex;
         }
     }
 
-    .timeBoxMainDiv::before {
+    /* .timeBoxMainDiv::before {
         content: " ";
         background-color: #e2f9ffef;
         height: 100%;
@@ -597,7 +931,7 @@
         top: 0%;
         left: 0%;
 
-    }
+    } */
 
     .d-none {
         display: none !important;
@@ -631,46 +965,60 @@
         position: absolute;
         transform: translate(-50%, -50%);
         top: 70%;
-        left: 68%;
+        left: 67%;
         width: 500px;
         z-index: 4;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 1px;
+        gap: 4px;
+        /* border: 2px solid white; */
 
-        .inputfielddivbox {
+        .inputframebox {
+            height: 57px;
+            width: auto;
+            position: relative;
+            z-index: 5;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 4px;
-            padding: 12px 0px;
-            position: relative;
-            top: -6%;
+            padding: 0px 30px;
+
 
             .inputField {
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
                 pointer-events: none;
                 user-select: none;
-                height: 38px;
-                width: 34px;
-                border: 2px solid rgb(0, 0, 0);
-                border-radius: 4px;
-                background-color: #eefbff;
-                box-shadow: 0px 0px 4px 0px rgba(255, 255, 255, 0.404);
+                height: 40px;
+                width: 40px;
+                border: none;
+                background-color: transparent;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 font-size: 24px;
                 font-weight: 700;
                 text-align: center;
+                outline: none;
+                color: white;
 
             }
 
             .inputField:focus {
-                outline-color: blue;
+                transform: scale(1.09);
+                color: #3ba801;
+                filter: drop-shadow(0px 0px 4px rgb(99, 164, 1));
             }
         }
+
+
 
         .alphabetsRow {
             display: flex;
@@ -686,20 +1034,15 @@
                 background-repeat: no-repeat;
                 font-family: '3dFont';
                 font-size: 22px;
-
                 font-weight: 800;
                 display: flex;
                 user-select: none;
                 justify-content: center;
                 align-items: center;
                 width: 48px;
-                /* height: 38px; */
                 color: white;
-                /* border: 1px solid white; */
                 border-radius: 8px;
                 cursor: pointer;
-                /* background-color: #ff6b5a; */
-                /* box-shadow: 0px 0px 4px 0px rgba(241, 240, 240, 0.715); */
                 filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.943));
                 text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
                 padding: 6px 0px;
@@ -738,34 +1081,85 @@
                 cursor: pointer;
                 filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.943));
                 text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-                padding: 6px 0px;
+                padding: 8px 0px;
                 background-color: transparent;
                 border: none;
                 outline: none;
                 margin: 0;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+
+                &:disabled {
+                    pointer-events: none;
+                }
+
+                &:active {
+                    color: #3ba801;
+                    transform: scale(1.01);
+                }
             }
 
-            .enter:hover {
-                transform: scale(1.05);
+            .crossBtn {
+
+                pointer-events: visible;
+                background-image: url('./Hangman_Game_Button.png');
+                background-position: center;
+                background-color: transparent;
+                background-size: 100%, 100%;
+                background-repeat: no-repeat;
+                font-family: '3dFont';
+                font-size: 22px;
+                font-weight: 800;
+                display: flex;
+                user-select: none;
+                justify-content: center;
+                align-items: center;
+                width: 48px;
+                color: white;
+                border-radius: 8px;
+                cursor: pointer;
+                filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.943));
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+                padding: 8px 0px;
+                margin-left: 2px;
+                border: none;
+                outline: none;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+
+                &:disabled {
+                    pointer-events: none;
+                }
+
+                &:active {
+                    color: #3ba801;
+                    transform: scale(1.01);
+                }
             }
 
-            .enter:disabled {
-                /* transform: scale(1.05); */
-                pointer-events: none;
-            }
-
-            .enter:active {
-                color: #3ba801;
-                transform: scale(1.01);
-
-
-            }
 
         }
     }
 
 }
 
+
+@media screen and (min-width: 1024px) and (max-width: 1140px) {
+
+    .main-container {
+        .trailsBox {
+            left: 4.6%;
+        }
+
+
+    }
+
+
+}
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 
@@ -774,11 +1168,12 @@
 
         .hintBox {
             bottom: 40%;
-            left: 3%;
-            width: 150px;
+            left: 1%;
+            width: 200px;
+            max-height: 200px;
 
             .hintparagraph {
-                font-size: 14px;
+                font-size: 15px;
 
             }
 
@@ -803,9 +1198,25 @@
             width: 60%;
         }
 
+        .trailsBox {
+            left: 3.8%;
+
+            .progressBarBox {
+                #bar-label {
+                    left: 5% !important;
+                }
+            }
+        }
+
         @media screen and (min-width: 768px) and (max-width: 930px) {
             .trailsBox {
-                left: 9.8%;
+                left: 2.8%;
+
+                .progressBarBox {
+                    #bar-label {
+                        left: 6.5% !important;
+                    }
+                }
             }
 
             .modes-dropdown {
@@ -896,9 +1307,11 @@
         height: max(100dvh, 990px);
 
         .trailsBox {
-            top: 7.5%;
-            left: 10.7%;
+            top: 8.0%;
+            left: 2.7%;
         }
+
+
 
 
         .modes-dropdown {
@@ -951,11 +1364,12 @@
 
 
         .hintBox {
-            width: 150px;
-            left: 2%;
+            width: 230px;
+            left: 1%;
             bottom: 40%;
+            max-height: 250px;
 
-            .hintparagraph {
+            .hintpara {
                 font-size: 14px;
 
             }
@@ -1016,6 +1430,16 @@
 
     }
 
+    @media screen and (min-width: 576px) and (max-width: 658px) {
+        .main-container {
+            .trailsBox {
+                top: 8.0%;
+                left: 2.7%;
+                width: 115px;
+            }
+        }
+    }
+
 
 }
 
@@ -1030,21 +1454,30 @@
 
 
         .trailsBox {
+            justify-content: center;
             top: 24%;
-            left: 13.7%;
+            left: 5.7%;
+            gap: 12px;
+            width: 96px;
         }
 
         .hintBox {
-            width: 150px;
+
             left: 2%;
             bottom: 40%;
+            width: 200px;
+            max-height: 200px;
 
             .hintparagraph {
-                font-size: 14px;
+                font-size: 15px;
 
             }
 
 
+        }
+
+        .hintBulbBox {
+            bottom: 25%;
         }
 
         .modes-dropdown {
@@ -1067,8 +1500,10 @@
             width: 70%;
 
             .paragraph {
+                padding: 0px 30px;
+                gap: 2px;
 
-                font-size: 18px;
+                font-size: 14px !important;
                 font-weight: 500;
             }
         }
@@ -1166,7 +1601,7 @@
         background-image: url('./Mobile_View_Hangman_Background.png');
         background-position: center;
         background-repeat: no-repeat;
-        height: max(100dvh, 800px);
+        height: max(100dvh, 600px);
 
         .notification {
             width: 80%;
@@ -1177,18 +1612,54 @@
         }
 
         .trailsBox {
+            justify-content: center;
             top: 24%;
-            left: 13.7%;
+            left: 5.7%;
+            gap: 20px;
+            width: 90px;
+
+            .progressBarBox {
+                #bar-label {
+                    left: 2% !important;
+                }
+
+                .bar-container {
+                    height: 8px;
+                    width: 55px;
+                }
+            }
+        }
+
+        .hintBox {
+
+            left: 1%;
+            bottom: 40%;
+            width: 163px;
+            max-height: 250px;
+
+            .hintpara {
+                font-size: 13px;
+
+            }
+
+
+        }
+
+        .hintBulbBox {
+            bottom: 30%;
         }
 
         .cover {
             width: 90%;
 
             .paragraph {
+                padding: 0px 30px;
+                gap: 2px;
 
-                font-size: 18px;
+                font-size: 14px !important;
                 font-weight: 500;
             }
+
         }
 
         .gif1 {
@@ -1221,18 +1692,7 @@
         }
 
 
-        .hintBox {
-            width: 150px;
-            left: 2%;
-            bottom: 40%;
 
-            .hintparagraph {
-                font-size: 14px;
-
-            }
-
-
-        }
 
         .modes-dropdown {
             top: 40.2%;
@@ -1256,8 +1716,8 @@
             /* top: calc(100dvh * 0.46); */
 
             left: 54.6%;
-            height: 280px;
-            width: 170px;
+            height: 270px;
+            width: 180px;
         }
 
         .wordsKeyboard {
@@ -1307,6 +1767,17 @@
 
     }
 
+
+    @media screen and (min-width: 390px) and (max-width: 400px) {
+        .main-container {
+            .trailsBox {
+
+                left: 4.7%;
+                ;
+            }
+        }
+    }
+
 }
 
 @media screen and (min-width: 200px) and (max-width: 390px) {
@@ -1316,7 +1787,7 @@
         background-image: url('./Mobile_View_Hangman_Background.png');
         background-position: center;
         background-repeat: no-repeat;
-        height: max(100vh, 800px);
+        height: max(100vh, 600px);
 
         .notification {
             width: 80%;
@@ -1327,16 +1798,55 @@
         }
 
         .trailsBox {
-            top: 24%;
-            left: 13.7%;
+            justify-content: center;
+            /* top: 23%;
+            left: 3.7%;
+            gap: 4px; */
+            width: 90px;
+
+            top: 23.4%;
+            left: 3.7%;
+            gap: 9px;
+
+            .progressBarBox {
+                #bar-label {
+                    left: 5% !important;
+                }
+
+                .bar-container {
+                    height: 8px;
+                    width: 55px;
+                }
+            }
         }
+
+        .hintBox {
+
+            left: 1%;
+            bottom: 40%;
+            width: 120px;
+            max-height: 200px;
+
+            .hintpara {
+                font-size: 12px;
+
+            }
+
+
+        }
+
+        .hintBulbBox {
+            bottom: 38%;
+        }
+
 
         .cover {
             width: 90%;
 
             .paragraph {
-
-                font-size: 18px;
+                padding: 0px 30px;
+                gap: 2px;
+                font-size: 14px !important;
                 font-weight: 500;
             }
         }
@@ -1371,18 +1881,7 @@
         }
 
 
-        .hintBox {
-            width: 100px;
-            left: 2%;
-            bottom: 40%;
 
-            .hintparagraph {
-                font-size: 11px;
-
-            }
-
-
-        }
 
         .modes-dropdown {
             top: 40.2%;
@@ -1402,7 +1901,7 @@
 
         .hangman-character-div {
 
-            top: 45%;
+            top: 43%;
             left: 54.6%;
             height: 250px;
             width: 140px;
@@ -1456,6 +1955,8 @@
 }
 
 
+
+
 /* media queries for specific devices  strickly  */
 
 @media only screen and (width: 1032px) and (max-height : 1376px) {
@@ -1468,8 +1969,30 @@
         height: max(100dvh, 990px);
 
         .trailsBox {
-            top: 7.9%;
-            left: 10.9%;
+            justify-content: center;
+            top: 24%;
+            left: 5.7%;
+            gap: 12px;
+            width: 96px;
+        }
+
+        .hintBox {
+
+            left: 2%;
+            bottom: 40%;
+            width: 200px;
+            max-height: 200px;
+
+            .hintpara {
+                font-size: 15px;
+
+            }
+
+
+        }
+
+        .hintBulbBox {
+            bottom: 25%;
         }
 
 
@@ -1526,18 +2049,7 @@
         }
 
 
-        .hintBox {
-            width: 150px;
-            left: 2%;
-            bottom: 40%;
 
-            .hintparagraph {
-                font-size: 14px;
-
-            }
-
-
-        }
 
         .hangman-character-div {
 
@@ -1980,7 +2492,6 @@
     }
 }
 
-
 @media only screen and (width: 912px) and (height: 1368px) {
 
     .main-container {
@@ -2273,5 +2784,16 @@
     100% {
         opacity: 0;
         transform: translate(200%, -100px) scale(1);
+    }
+}
+
+
+@keyframes move-stripes {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 20px 0;
     }
 }

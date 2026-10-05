@@ -4,17 +4,18 @@
 function startJavaScriptFunc() {
 
     let startbtn = document.getElementById('startBtn')
-
-
-    // let modesForm = document.getElementById('modesform')
     let hintBx = document.getElementById('hintBox')
     let enterbtn = document.getElementById('enterbtn')
+    let translateBtn = document.getElementById('translateBtn')
+    let crossbtn = document.getElementById('crossbtn')
+    let hintBulb = document.getElementById('hintBulb')
     let cover = document.getElementById('startCover')
     let hangmanChar = document.getElementById('hangmanChar')
     let imgChar = document.getElementById('imgChar')
     let correctnotify = document.getElementById('correctnotify')
     let wrongnotify = document.getElementById('wrongnotify')
     let trailsBox = document.getElementById('trailsBox')
+    let trailsBoxMainDiv = document.getElementById('trailsBoxMainDiv')
     let incrementDecrement = document.getElementById('incrementDecrement')
     let alphabets = document.querySelectorAll('.alphabets');
 
@@ -25,7 +26,6 @@ function startJavaScriptFunc() {
     const winGameSound = new Audio('/static/winGame.wav')
     const yesSound = new Audio('/static/yes.wav')
     const backgroundSound = new Audio('/static/backgroundSound.mp3')
-
 
     const dropBtn = document.getElementById("timeBox");
     const dropdownMenu = document.getElementById("dropdownMenu");
@@ -44,10 +44,17 @@ function startJavaScriptFunc() {
     imgChar.src = "/static/normal.gif";
     enterbtn.disabled = true;
     hintBx.style.display = "none";
+    trailsBoxMainDiv.style.display = "none";
+
+    cover.style.backgroundImage = "url('/static/mainModal.png')";
+
+    correctnotify.style.backgroundImage = "url('/static/notify.png')";
+    wrongnotify.style.backgroundImage = "url('/static/notify.png')";
 
     let wordsObjBackend = [];
     let isBackendArrHasLength = false;
     let trails = 0;
+    // let myNumber = 0;
     let emptyInputs = [];
     let nonEmptyInputsvalues = [];
     let userTypedInputsvalues = [];
@@ -62,12 +69,15 @@ function startJavaScriptFunc() {
     const timeArr = [120, 180, 300, 600];
 
     // const timeshow = ['1:30']
-
+    dropBtn.style.backgroundImage = "url('/static/timerBtn.png')"
     dropBtn.classList.add("d-none");
     modesDropdownBtn.classList.add('pointer-none')
     volumeBox.classList.add('volumeBox-none')
     modesForm.value = '0';
     timeforms.value = '0';
+    // hintBx.style.display = "none";
+    hintBulb.style.display = "none";
+
 
 
 
@@ -112,8 +122,7 @@ function startJavaScriptFunc() {
                 let formattedSeconds = String(seconds).padStart(2, '0');
                 seconds = formattedSeconds
             }
-            // console.log("show minuts", minutes)
-            // console.log("show seconds", seconds)
+
             timeBoxText.innerHTML = `${minutes}:${seconds}`
 
             if (counter === 0) {
@@ -126,6 +135,7 @@ function startJavaScriptFunc() {
                 nonEmptyInputsvalues = [];
                 userTypedInputsvalues = [];
                 count = -1
+                createProgressBar(trails)
                 setTimeout(() => {
                     trails = 0;
                     trailsBox.innerText = trails
@@ -148,10 +158,13 @@ function startJavaScriptFunc() {
                     let ttbox = `<span>Time Up!</span>`;
                     let fstPra = `
                     
-                    
                     <img src="../static/angry.png" alt="s" class="d2-img1 d2-img"> Man Die : You Lose! <img src="../static/angry.png" alt="s" class="d2-img1 d2-img">`;
-                    let btntext = "Start Again";
-                    let wtext = `In which you have only three trais and must be completed to given time to save the man, So Beware for Next Time.`;
+                    // let btntext = "Play Again";
+                    // let wtext = `In which you have only three trais and must be completed to given time to save the man, So Beware for Next Time.`;
+                    let playAgainSpan = document.getElementById("buttonSpanTag")
+
+
+                    let wtext = `Let's Play!`;
                     ptext.forEach((e) => {
                         if (e.id === "tt") {
                             e.style.fontSize = '22px';
@@ -162,7 +175,7 @@ function startJavaScriptFunc() {
                             e.innerHTML = fstPra
                         }
                         if (e.id === "startBtn") {
-                            e.innerText = btntext
+                            playAgainSpan.innerText = "Play Again";
                         }
                         if (e.id === "warningText") {
                             e.innerText = wtext
@@ -209,8 +222,6 @@ function startJavaScriptFunc() {
     });
 
 
-
-
     volBoxArrowIcon.addEventListener("click", (e) => {
         let parent = e.target.parentElement.offsetParent
         parent.classList.toggle('volumeBox-toggle')
@@ -238,10 +249,6 @@ function startJavaScriptFunc() {
     })
 
 
-
-
-
-
     function generateInputs() {
         enterbtn.disabled = true;
         count = -1;
@@ -252,13 +259,13 @@ function startJavaScriptFunc() {
         if (trails === 3) {
             hangmanChar.style.top = `${charTopValue}%`
         }
-
         if (isBackendArrHasLength === true) {
+            hintBx.style.backgroundImage = "url('/static/hintBoard.png')";
             let inputFieldsBox = document.getElementById("inputFieldsBox");
             let hintpara = document.getElementById('hintpara')
             let word = wordsObjBackend.Word;
             let hint = wordsObjBackend.Hint;
-            hintBx.style.display = "block";
+            hintBx.style.display = "none";
             let wordsArr = word.split('')
             console.log("---------------show me the word arrr", wordsArr)
             const maxRange = wordsArr.length;
@@ -271,24 +278,22 @@ function startJavaScriptFunc() {
             }
             const randomIndex = Math.floor(Math.random() * validOptionsForNum2.length);
             const num2 = validOptionsForNum2[randomIndex];
-
             if (wordsArr.length) {
                 let dyInputs = "";
+                inputFieldsBox.style.backgroundImage = "url('/static/inputBoxframe.png')";
                 wordsArr.forEach((e, ind) => {
                     if (ind === num1 || ind === num2) {
                         dyInputs += `
-  <input name='inputfield_${ind}' id='inputfield_${ind}' inputmode='none'  value='${e}' type='text' class='inputfield_${ind} inputField'>
+  <input name='inputfield_${ind}' id='inputfield_${ind}' onkeydown="event.preventDefault();" inputmode='none'  value='${e}' type='text' class='inputfield_${ind} inputField'>
   
 `;
 
-
                     }
-
 
                     else {
 
                         dyInputs += `
-  <input name='inputfield_${ind}' id='inputfield_${ind}' inputmode='none' value='' type='text' class='inputfield_${ind} inputField'>
+  <input name='inputfield_${ind}' id='inputfield_${ind}' onkeydown="event.preventDefault();" inputmode='none' value='' type='text' class='inputfield_${ind} inputField'>
   
 `;
 
@@ -298,49 +303,29 @@ function startJavaScriptFunc() {
                 });
 
                 inputFieldsBox.innerHTML = dyInputs;
+                hintpara.style.textAlign = "start";
                 hintpara.innerText = hint;
                 let emy = []
-
                 const inputNodeList = document.querySelectorAll('.inputField');
                 inputNodeList.forEach((e, i) => {
-
-
+                    e.style.backgroundImage = "url('/static/input_field_frame.png')";
                     if (e.value === '') {
                         emy.push(e)
                         emptyInputs.push(e)
                         wordsMapValue.push("")
-
-
-
-
                     } else {
                         nonEmptyInputsvalues.push(e.value)
                         wordsMapValue.push(e.value)
                     }
-
                     if (emy.length) {
-
                         if (e.id === emy[0].id) {
                             e.focus();
                         }
-
                     }
-
-
                 })
-
-
-
             }
 
-
         }
-
-
-
-
-
-
 
 
     }
@@ -391,8 +376,11 @@ function startJavaScriptFunc() {
     }
 
     startbtn.addEventListener('click', async (e) => {
+
         timeCountDown(timeArr[0])
         e.preventDefault();
+        hintBulb.style.display = "flex";
+        trailsBoxMainDiv.style.display = "flex";
         volumeBox.classList.remove('volumeBox-none')
         dropBtn.classList.remove("d-none");
         imgChar.src = "/static/normal.gif";
@@ -424,6 +412,8 @@ function startJavaScriptFunc() {
             let result = await data.json();
             trails = result.Response_Data.Trails
             trailsBox.innerText = trails;
+            // myNumber = trails;
+            createProgressBar(trails)
             wordsObjBackend = result.Response_Data.Words;
             isBackendArrHasLength = true;
             console.log("show me the ------- startAgain Value", result);
@@ -463,39 +453,20 @@ function startJavaScriptFunc() {
 
     alphabets.forEach((btns) => {
         btns.addEventListener('click', (keyEvent) => {
-
-
             if (!isSoundMute) {
                 btncllickSound.currentTime = 0;
                 btncllickSound.play();
             }
-
-
             if (emptyInputs.length) {
                 if (emptyInputs.length !== count + 1) {
                     count++;
-
-
                     const inputNodeList = document.querySelectorAll('.inputField');
                     inputNodeList.forEach((e, i) => {
-
-
-
-
                         if (e.id === emptyInputs[count].id) {
                             e.value = keyEvent.target.innerText.toLowerCase();
                             userTypedInputsvalues.push(keyEvent.target.innerText.toLowerCase());
+                            console.log("show my the userTyed Array", userTypedInputsvalues, count)
                             e.blur();
-                            console.log("show me the user typed arry", userTypedInputsvalues)
-
-
-
-
-
-
-
-
-
                             inputNodeList.forEach((nxte) => {
                                 if (emptyInputs.length !== count + 1) {
                                     if (nxte.id === emptyInputs[count + 1].id) {
@@ -513,16 +484,70 @@ function startJavaScriptFunc() {
                     enterbtn.disabled = false;
                     isEnterBtnDisabled = false;
                 }
-
-
-
             }
-
-
-
-
         })
     })
+
+    crossbtn.addEventListener('click', (e) => {
+        // console.log("show me the click", e)
+        if (emptyInputs.length) {
+            if (emptyInputs.length !== count - 1) {
+
+                const inputNodeList = document.querySelectorAll('.inputField');
+                // console.log("userTypedInputsvalues.length", emptyInputs)
+                if (userTypedInputsvalues.length > 0) {
+                    inputNodeList.forEach((e, i) => {
+                        if (e.id === emptyInputs[count].id) {
+                            // e.value = keyEvent.target.innerText.toLowerCase();
+                            userTypedInputsvalues.pop();
+                            e.value = ''
+                            console.log("show my the userTyed Array", userTypedInputsvalues, count, emptyInputs)
+                            e.focus();
+                            // e.style.color = "green";
+                            enterbtn.disabled = true;
+                            isEnterBtnDisabled = true;
+
+                        }
+                    })
+                    count--;
+                } else {
+                    console.log("emptyInputs", emptyInputs, count)
+                    inputNodeList.forEach((e, i) => {
+                        if (e.id === emptyInputs[count + 1].id) {
+                            e.focus();
+                        }
+                    })
+                }
+
+            }
+            if (emptyInputs.length === count - 1) {
+                console.log("length is equal")
+                enterbtn.disabled = false;
+                isEnterBtnDisabled = false;
+            }
+        }
+    })
+
+    hintBulb.addEventListener("click", (e) => {
+        hintBx.style.display = "flex";
+        hintBulb.style.display = "none";
+    })
+
+    let hintParaEng = true;
+    translateBtn.addEventListener("click", (e) => {
+        hintParaEng = !hintParaEng;
+        if (hintParaEng) {
+            let engHint = wordsObjBackend.Hint;
+            hintpara.innerText = engHint;
+            hintpara.style.textAlign = "start";
+
+        } else {
+            let urduHint = wordsObjBackend.UrduHint;
+            hintpara.innerText = urduHint;
+            hintpara.style.textAlign = "end";
+
+        }
+    });
 
     enterbtn.addEventListener('click', async (event) => {
         let combinedArry = []
@@ -535,14 +560,11 @@ function startJavaScriptFunc() {
             }
             return char;
         });
-
         combinedArry = arr3;
         if (!isSoundMute) {
             enterBtnSound.currentTime = 0;
             enterBtnSound.play();
         }
-
-
 
         try {
             let data = await fetch('/user-data', {
@@ -557,6 +579,8 @@ function startJavaScriptFunc() {
             ismatch = result.Response_Data.Match;
             trails = result.Response_Data.Trails
             trailsBox.innerText = trails;
+            createProgressBar(trails)
+            hintBulb.style.display = "flex";
 
             if (result.Response_Data.New_Words !== null) {
                 if (ismatch) {
@@ -584,8 +608,8 @@ function startJavaScriptFunc() {
                     incrementDecrement.style.color = "red";
                     console.log("show increment decrement", incrementDecrement)
                     setTimeout(() => {
-                        incrementDecrement.classList.remove('d-visible');
-                        wrongnotify.style.display = "none";
+                        // incrementDecrement.classList.remove('d-visible');
+                        // wrongnotify.style.display = "none";
                     }, 1500);
                     console.log("No the Word Are Not Match")
                 }
@@ -612,19 +636,24 @@ function startJavaScriptFunc() {
                         }
 
                         cover.classList.remove('disabled');
+                        cover.style.gap = '15px';
                         volumeBox.classList.add('volumeBox-none')
+                        let ttdiv = document.getElementById('tt');
+                        ttdiv.style.display = "none";
                         let ptext = document.querySelectorAll("#paraText,#warningText,#startBtn")
                         console.log("show my loop", ptext)
                         let fstPra = `<img src="../static/angry.png" alt="s" class="d2-img1 d2-img"> Man Die : You Lose! <img src="../static/angry.png" alt="s" class="d2-img1 d2-img">`;
-                        let btntext = "Start Again";
-                        let wtext = `In which you have only three trais to save the man,But ${result.Response_Data.Message} So Beware for Next Time.`;
+                        let btntext = "Play Again";
+                        let playAgainSpan = document.getElementById("buttonSpanTag")
+                        let wtext = `Let's Play`;
                         ptext.forEach((e) => {
                             if (e.id === "paraText") {
                                 e.style.fontSize = '22px';
                                 e.innerHTML = fstPra
                             }
                             if (e.id === "startBtn") {
-                                e.innerText = btntext
+                                // e.innerText = btntext
+                                playAgainSpan.innerText = btntext
                             }
                             if (e.id === "warningText") {
                                 e.innerText = wtext
@@ -632,49 +661,46 @@ function startJavaScriptFunc() {
                         })
                     }, 1000);
 
-
-
-
                 }
 
                 if (result.Response_Data.Win) {
                     backgroundSound.pause();
-
                     hintBx.style.display = "none";
                     emptyInputs = [];
                     nonEmptyInputsvalues = [];
                     userTypedInputsvalues = [];
                     count = -1
+                    trails = 6;
+                    trailsBox.innerText = trails;
+                    let playAgainSpan = document.getElementById("buttonSpanTag")
+                    createProgressBar(trails)
                     setTimeout(() => {
                         enterbtn.disabled = true;
-                        // modesForm.disabled = true;
                         dropBtn.classList.add("d-none");
                         modesDropdownBtn.classList.add('pointer-none')
-
-
                         if (!isSoundMute) {
                             winGameSound.currentTime = 0;
                             winGameSound.play();
                         }
-
-
                         cover.classList.remove('disabled');
+                        cover.style.gap = '15px';
                         volumeBox.classList.add('volumeBox-none')
+                        let ttdiv = document.getElementById('tt');
+                        ttdiv.style.display = "none";
                         let ptext = document.querySelectorAll("#paraText,#warningText,#startBtn")
                         console.log("show my loop", ptext)
                         let fstPra = `<img src="../static/happy.png" alt="s" class="d2-img1 d2-img">  You Win! <img src="../static/happy.png" alt="s" class="d2-img1 d2-img">`;
                         hangmanChar.style.top = `${charTopValue}%`
                         imgChar.src = "/static/happy.gif";
-
-                        let btntext = "Start Again";
-                        let wtext = ` ${result.Response_Data.Message} So Let's Play Again`;
+                        let btntext = "Play Again";
+                        let wtext = `Let's Play`;
                         ptext.forEach((e) => {
                             if (e.id === "paraText") {
                                 e.style.fontSize = '22px';
                                 e.innerHTML = fstPra
                             }
                             if (e.id === "startBtn") {
-                                e.innerText = btntext
+                                playAgainSpan.innerText = btntext
                             }
                             if (e.id === "warningText") {
                                 e.innerText = wtext
@@ -700,46 +726,69 @@ function startJavaScriptFunc() {
             }
 
             if (trails === 3) {
-                // hangmanChar.style.top = "65%"
                 hangmanChar.style.top = `${charTopValue}%`
-
-
                 imgChar.src = "/static/normal.gif";
             }
 
             if (trails === 2) {
-
                 hangmanChar.style.top = `${charTopValue - 1}%`
-
                 imgChar.src = "/static/scary.gif";
             }
             if (trails === 1) {
                 // hangmanChar.style.top = "63%"
                 hangmanChar.style.top = `${charTopValue - 2}%`
-
                 imgChar.src = "/static/cry.gif";
             }
             if (trails === 0) {
                 // hangmanChar.style.top = "60%"
-                hangmanChar.style.top = `${charTopValue - 4}%`
-
+                hangmanChar.style.top = `${charTopValue - 4}% `;
                 imgChar.src = "/static/dead.gif";
             }
-
-
             console.log("show me the wordobj", wordsObjBackend)
-
-
-            // generateInputs()
-
-
-
         } catch (error) {
             console.log("there is some error occurs", error)
-
         }
 
     })
+
+
+
+    function createProgressBar(myNumber) {
+
+        const maxNumber = 6;
+        let percentage = (myNumber / maxNumber) * 100;
+        percentage = Math.max(0, Math.min(100, percentage));
+        const bar = document.querySelector('.progress-bar');
+        const labelSpan = document.getElementById('bar-label');
+        function get3DColor(num) {
+            switch (num) {
+                case 1:
+                    labelSpan.innerText = "Loss";
+                    return '#ff4d4d';
+                case 2:
+                    labelSpan.innerText = "Loss";
+                    return '#ff7675';
+                case 3:
+                    labelSpan.innerText = "Play";
+                    return '#ffcd03';
+                case 4:
+                    labelSpan.innerText = "+2 Win";
+                    return '#ffcc00';
+                case 5:
+                    labelSpan.innerText = "+1 Win";
+                    return '#addf56';
+                case 6:
+                    labelSpan.innerText = "Win";
+                    return '#13c219';
+                default:
+                    return '#e0e0e0';
+            }
+        }
+
+        bar.style.width = percentage + '%';
+        bar.style.backgroundColor = get3DColor(myNumber);
+
+    }
 
 
 }

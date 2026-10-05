@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Clarity+City:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +11,7 @@
 
 
 .main-container {
-
+    font-family: "Clarity City", sans-serif;
     height: max(100vh, 559px);
     width: 100%;
     background-color: burlywood;
@@ -40,14 +43,14 @@
         background-position: center;
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        gap: 18px;
+        gap: 25px;
         border-radius: 12px;
         /* border: 1.5px solid white; */
         filter: drop-shadow(0px 0px 119px rgba(255, 255, 255, 0.906));
 
         .tt {
-            margin-bottom: -11px;
-            margin-top: 5px;
+            margin-bottom: -37px;
+            margin-top: 10px;
             text-shadow: 1px 0px 1px rgb(3, 3, 3);
             color: white;
         }
@@ -66,7 +69,7 @@
             gap: 18px;
             width: 92%;
             text-align: center;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 500;
             text-shadow: 1px 0px 1px rgb(3, 3, 3);
             padding: 0px 50px;
@@ -265,9 +268,6 @@
 
     }
 
-
-
-
     .disabled {
         display: none;
     }
@@ -420,7 +420,7 @@
                 color: #533626;
                 position: absolute;
                 top: 11%;
-                left: -4%;
+                left: -8%;
             }
         }
     }
@@ -443,8 +443,6 @@
             transition: width 0.5s ease, background-color 0.5s ease;
         }
     } */
-
-
 
 
 
@@ -1148,11 +1146,20 @@
 }
 
 
-@media screen and (min-width: 1024px) and (max-width: 1140px) {
+@media screen and (min-width: 1024px) and (max-width: 1160px) {
 
     .main-container {
         .trailsBox {
             left: 4.6%;
+        }
+
+        .cover {
+            width: 60%;
+
+            .paragraph {
+                font-size: 16px;
+            }
+
         }
 
 
@@ -1196,6 +1203,10 @@
 
         .cover {
             width: 60%;
+
+            .paragraph {
+                font-size: 16px;
+            }
         }
 
         .trailsBox {
@@ -1331,7 +1342,17 @@
         }
 
         .cover {
-            width: 70%;
+            width: 80%;
+
+
+            .firstText {
+                /* margin-top: -5px; */
+                font-size: 18px
+            }
+
+            .paragraph {
+                font-size: 16px;
+            }
         }
 
         .gif1 {
@@ -1457,7 +1478,7 @@
             justify-content: center;
             top: 24%;
             left: 5.7%;
-            gap: 12px;
+            gap: 8px;
             width: 96px;
         }
 
@@ -1498,6 +1519,11 @@
 
         .cover {
             width: 70%;
+
+            .firstText {
+                margin-bottom: 10px;
+                font-size: 18px
+            }
 
             .paragraph {
                 padding: 0px 30px;
@@ -1601,7 +1627,7 @@
         background-image: url('./Mobile_View_Hangman_Background.png');
         background-position: center;
         background-repeat: no-repeat;
-        height: max(100dvh, 600px);
+        height: max(100dvh, 400px);
 
         .notification {
             width: 80%;
@@ -1614,8 +1640,8 @@
         .trailsBox {
             justify-content: center;
             top: 24%;
-            left: 5.7%;
-            gap: 20px;
+            left: 5.0%;
+            gap: 12px;
             width: 90px;
 
             .progressBarBox {
@@ -1652,11 +1678,16 @@
         .cover {
             width: 90%;
 
+            .firstText {
+                margin-bottom: 10px;
+                font-size: 18px
+            }
+
             .paragraph {
                 padding: 0px 30px;
                 gap: 2px;
 
-                font-size: 14px !important;
+                font-size: 12px !important;
                 font-weight: 500;
             }
 
@@ -1787,7 +1818,7 @@
         background-image: url('./Mobile_View_Hangman_Background.png');
         background-position: center;
         background-repeat: no-repeat;
-        height: max(100vh, 600px);
+        height: max(100vh, 400px);
 
         .notification {
             width: 80%;
@@ -1843,10 +1874,15 @@
         .cover {
             width: 90%;
 
+            .firstText {
+                margin-bottom: 10px;
+                font-size: 18px
+            }
+
             .paragraph {
                 padding: 0px 30px;
                 gap: 2px;
-                font-size: 14px !important;
+                font-size: 12px !important;
                 font-weight: 500;
             }
         }
@@ -1970,10 +2006,22 @@
 
         .trailsBox {
             justify-content: center;
-            top: 24%;
-            left: 5.7%;
-            gap: 12px;
+
+            top: 9%;
+            left: 6.7%;
+            gap: 50px;
             width: 96px;
+
+            .progressBarBox {
+                #bar-label {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #533626;
+                    position: absolute;
+                    top: -8%;
+                    left: -36%;
+                }
+            }
         }
 
         .hintBox {
@@ -2116,8 +2164,22 @@
         height: max(100dvh, 990px);
 
         .trailsBox {
-            top: 7.9%;
-            left: 10.9%;
+            justify-content: center;
+            top: 8.9%;
+            left: 4.9%;
+            gap: 52px;
+
+            .progressBarBox {
+                #bar-label {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #533626;
+                    position: absolute;
+                    top: -8%;
+                    left: -20px !important;
+
+                }
+            }
         }
 
 

@@ -66,7 +66,7 @@ function startJavaScriptFunc() {
     let charTopValue = '';
     let isSoundMute = false;
     const modeLabels = { '0': 'Easy', '1': 'Medium', '2': 'Hard' };
-    const timeArr = [120, 180, 300, 600];
+    const timeArr = [3, 180, 300, 600];
 
     // const timeshow = ['1:30']
     dropBtn.style.backgroundImage = "url('/static/timerBtn.png')"
@@ -79,7 +79,7 @@ function startJavaScriptFunc() {
     hintBulb.style.display = "none";
 
 
-
+    let valuePoints = 6;
 
     modesDropdownBtn.addEventListener("click", (event) => {
         modesDropdownMenu.classList.toggle("open");
@@ -151,7 +151,7 @@ function startJavaScriptFunc() {
                         loseGameSound.play();
                     }
                     cover.classList.remove('disabled');
-                    cover.style.gap = "10px";
+                    cover.style.gap = "5px";
                     volumeBox.classList.add('volumeBox-none')
                     let ptext = document.querySelectorAll("#tt,#paraText,#warningText,#startBtn")
                     console.log("show my loop", ptext)
@@ -167,11 +167,12 @@ function startJavaScriptFunc() {
                     let wtext = `Let's Play!`;
                     ptext.forEach((e) => {
                         if (e.id === "tt") {
-                            e.style.fontSize = '22px';
+                            e.style.marginBottom = "-18px";
+                            // e.style.fontSize = '18px';
                             e.innerHTML = ttbox
                         }
                         if (e.id === "paraText") {
-                            e.style.fontSize = '22px';
+                            // e.style.fontSize = '18px';
                             e.innerHTML = fstPra
                         }
                         if (e.id === "startBtn") {
@@ -591,25 +592,29 @@ function startJavaScriptFunc() {
                         }, 500);
                     }
 
-
+                    let wrightpoints = document.getElementById("wrightpoints");
+                    wrightpoints.innerText = valuePoints - trails;
                     console.log("Yes you type correct word")
                     incrementDecrement.classList.add('d-visible');
                     incrementDecrement.innerText = "+1";
                     incrementDecrement.style.color = "#28530c";
                     correctnotify.style.display = "flex";
+
                     setTimeout(() => {
                         incrementDecrement.classList.remove('d-visible');
                         correctnotify.style.display = "none";
                     }, 1500);
                 } else {
                     wrongnotify.style.display = "flex";
+                    let wrongpoints = document.getElementById("wrongpoints");
+                    wrongpoints.innerText = valuePoints - trails;
                     incrementDecrement.classList.add('d-visible');
                     incrementDecrement.innerText = "-1";
                     incrementDecrement.style.color = "red";
                     console.log("show increment decrement", incrementDecrement)
                     setTimeout(() => {
-                        // incrementDecrement.classList.remove('d-visible');
-                        // wrongnotify.style.display = "none";
+                        incrementDecrement.classList.remove('d-visible');
+                        wrongnotify.style.display = "none";
                     }, 1500);
                     console.log("No the Word Are Not Match")
                 }
@@ -648,7 +653,7 @@ function startJavaScriptFunc() {
                         let wtext = `Let's Play`;
                         ptext.forEach((e) => {
                             if (e.id === "paraText") {
-                                e.style.fontSize = '22px';
+                                // e.style.fontSize = '18px';
                                 e.innerHTML = fstPra
                             }
                             if (e.id === "startBtn") {
@@ -696,7 +701,7 @@ function startJavaScriptFunc() {
                         let wtext = `Let's Play`;
                         ptext.forEach((e) => {
                             if (e.id === "paraText") {
-                                e.style.fontSize = '22px';
+                                // e.style.fontSize = '18px';
                                 e.innerHTML = fstPra
                             }
                             if (e.id === "startBtn") {

@@ -1688,7 +1688,7 @@
         }
 
         .cover {
-            width: 90%;
+            width: 95%;
 
             .firstText {
                 margin-bottom: 10px;
@@ -1696,7 +1696,7 @@
             }
 
             .paragraph {
-                padding: 0px 30px;
+                padding: 0px 45px;
                 gap: 2px;
 
                 font-size: 12px !important;

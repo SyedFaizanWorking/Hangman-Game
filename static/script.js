@@ -103,15 +103,15 @@ function startJavaScriptFunc() {
     function timeCountDown(timeValue, btnClk = false) {
         let timeBoxText = document.getElementById('timeBoxText')
         let firstIntervalid = '';
-        let counter = 0;
+        let counter = timeValue;
 
         if (intervalId) {
-            // console.log('Clearing previous interval ID:', intervalId);
             clearInterval(intervalId);
+            counter = timeValue;
         }
 
 
-        counter = timeValue;
+
         intervalId = setInterval((e) => {
             firstIntervalid = intervalId
             const minutes = Math.floor(counter / 60);
@@ -376,7 +376,9 @@ function startJavaScriptFunc() {
     }
 
     startbtn.addEventListener('click', async (e) => {
-
+        if (intervalId) {
+            clearInterval(intervalId);
+        }
         timeCountDown(timeArr[0])
         e.preventDefault();
         hintBulb.style.display = "flex";
@@ -624,6 +626,9 @@ function startJavaScriptFunc() {
                 isBackendArrHasLength = false;
                 wordsObjBackend = null
                 if (result.Response_Data.Lose) {
+                    if (intervalId) {
+                        clearInterval(intervalId);
+                    }
                     backgroundSound.pause();
                     hintBx.style.display = "none";
                     emptyInputs = [];
@@ -668,6 +673,9 @@ function startJavaScriptFunc() {
                 }
 
                 if (result.Response_Data.Win) {
+                    if (intervalId) {
+                        clearInterval(intervalId);
+                    }
                     backgroundSound.pause();
                     hintBx.style.display = "none";
                     emptyInputs = [];

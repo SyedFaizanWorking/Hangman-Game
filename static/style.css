@@ -1315,7 +1315,8 @@
         background-image: url('./Hangman_Tablet_Responisve.png');
         background-position: center;
         background-repeat: no-repeat;
-        height: max(100dvh, 990px);
+        /* height: max(100dvh, 990px); */
+        height: 100vh;
 
         .trailsBox {
             top: 8.0%;
@@ -1471,7 +1472,8 @@
         background-image: url('./Mobile_View_Hangman_Background.png');
         background-position: center;
         background-repeat: no-repeat;
-        height: max(100dvh, 800px);
+        /* height: max(100dvh, 400px); */
+        height: 100vh;
 
 
         .trailsBox {
@@ -1480,6 +1482,11 @@
             left: 5.7%;
             gap: 8px;
             width: 96px;
+
+            #bar-label {
+                left: 2% !important;
+                color: rgb(237, 93, 9) !important;
+            }
         }
 
         .hintBox {
@@ -1627,7 +1634,8 @@
         background-image: url('./Mobile_View_Hangman_Background.png');
         background-position: center;
         background-repeat: no-repeat;
-        height: max(100dvh, 400px);
+        /* height: max(100vh, 400px); */
+        height: 100vh;
 
         .notification {
             width: 80%;
@@ -1647,6 +1655,7 @@
             .progressBarBox {
                 #bar-label {
                     left: 2% !important;
+                    color: green !important;
                 }
 
                 .bar-container {
@@ -1818,7 +1827,8 @@
         background-image: url('./Mobile_View_Hangman_Background.png');
         background-position: center;
         background-repeat: no-repeat;
-        height: max(100vh, 400px);
+        /* height: max(100vh, 400px); */
+        height: 100vh;
 
         .notification {
             width: 80%;
@@ -1842,6 +1852,7 @@
             .progressBarBox {
                 #bar-label {
                     left: 5% !important;
+                    color: green !important;
                 }
 
                 .bar-container {

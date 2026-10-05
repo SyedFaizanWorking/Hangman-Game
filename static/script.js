@@ -66,7 +66,7 @@ function startJavaScriptFunc() {
     let charTopValue = '';
     let isSoundMute = false;
     const modeLabels = { '0': 'Easy', '1': 'Medium', '2': 'Hard' };
-    const timeArr = [3, 180, 300, 600];
+    const timeArr = [120, 180, 300, 600];
 
     // const timeshow = ['1:30']
     dropBtn.style.backgroundImage = "url('/static/timerBtn.png')"
@@ -77,7 +77,6 @@ function startJavaScriptFunc() {
     timeforms.value = '0';
     // hintBx.style.display = "none";
     hintBulb.style.display = "none";
-
 
     let valuePoints = 6;
 
